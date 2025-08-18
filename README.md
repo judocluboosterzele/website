@@ -1,6 +1,8 @@
 # TODO
 
-In `astro.config.mjs` change the site config to the base domain (`site: "https://demo489.judocluboosterzele.be"` -> `site: "https://judocluboosterzele.be"`).
+In `astro.config.mjs` change the site config to the base domain
+
+(`site: "https://demo489.judocluboosterzele.be"` -> `site: "https://judocluboosterzele.be"`).
 
 # Astro Starter Kit: Basics
 
