@@ -8,7 +8,7 @@ import TrainingGroupCard from "../components/TrainingGroupCard.astro";
 import CTASection from "../components/CTASection.astro";
 
 // Images
-import heroImage from "../assets/images/startfoto.webp";
+import heroImage from "../assets/images/hero.png";
 ---
 
 <Layout
@@ -26,7 +26,7 @@ import heroImage from "../assets/images/startfoto.webp";
       primaryButtonLink="/contact/"
       secondaryButtonText="Leer Meer"
       secondaryButtonLink="/about/"
-      imageUrl={heroImage.src}
+      imageUrl={heroImage}
       imageAlt="Foto startpagina"
     />
 
@@ -38,28 +38,30 @@ import heroImage from "../assets/images/startfoto.webp";
           <FeatureCard
             title="Erkend met Gouden Label"
             description="Onze club is officieel erkend door de Vlaamse Judo Federatie met het prestigieuze Gouden Label voor kwaliteit en veiligheid."
-            imageUrl="https://images.pexels.com/photos/1263986/pexels-photo-1263986.jpeg?auto=compress&cs=tinysrgb&w=400"
+            imageUrl={heroImage}
             imageAlt="Gouden Label Judo Federatie"
+            loading="eager"
           />
 
           <FeatureCard
             title="Ervaren Instructeurs"
             description="Onze gediplomeerde trainers hebben jarenlange ervaring en begeleiden je stap voor stap."
-            imageUrl="https://images.pexels.com/photos/7045565/pexels-photo-7045565.jpeg?auto=compress&cs=tinysrgb&w=400"
+            imageUrl={heroImage}
             imageAlt="Ervaren instructeurs"
+            loading="eager"
           />
 
           <FeatureCard
             title="Alle Leeftijden"
             description="Van 6 jaar tot volwassenen - iedereen is welkom om judo te leren in een veilige omgeving."
-            imageUrl="https://images.pexels.com/photos/7045640/pexels-photo-7045640.jpeg?auto=compress&cs=tinysrgb&w=400"
+            imageUrl={heroImage}
             imageAlt="Alle leeftijden welkom"
           />
 
           <FeatureCard
             title="Wedstrijd & Recreatie"
             description="Of je nu wilt wedstrijden of gewoon voor de fun traint, wij hebben het juiste programma."
-            imageUrl="https://images.pexels.com/photos/6253312/pexels-photo-6253312.jpeg?auto=compress&cs=tinysrgb&w=400"
+            imageUrl={heroImage}
             imageAlt="Wedstrijd en recreatie"
           />
         </div>
