@@ -5,9 +5,8 @@ heroImage: "https://images.pexels.com/photos/7045565/pexels-photo-7045565.jpeg?a
 heroImageAlt: "Jongeren tijdens judotraining"
 ---
 
-# Jongeren (13-17 jaar)
-
 ## Trainingstijden
+
 **Maandag & Woensdag**: 19:00 - 20:30  
 **Zaterdag**: 11:00 - 12:30
 

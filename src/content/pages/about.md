@@ -5,8 +5,6 @@ heroImage: "https://images.pexels.com/photos/7045565/pexels-photo-7045565.jpeg?a
 heroImageAlt: "Judo training in onze dojo"
 ---
 
-# Over Onze Club
-
 Welkom bij onze judoclub, waar traditie en moderne training samenkomen. Al meer dan 20 jaar bieden wij kwalitatieve judo-instructie voor alle leeftijden en niveaus.
 
 ## Onze Filosofie
@@ -21,6 +19,7 @@ Judo is meer dan een sport - het is een levensfilosofie. Wij leren onze leden ni
 ## Faciliteiten
 
 Onze moderne dojo is uitgerust met:
+
 - Professionele tatami matten
 - Kleedkamers met douches
 - Ruime trainingsruimte

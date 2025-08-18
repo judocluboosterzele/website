@@ -1,31 +1,33 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Navigation from '../components/Navigation.astro';
-import Footer from '../components/Footer.astro';
-import HeroSection from '../components/HeroSection.astro';
-import GoldenLabel from '../components/GoldenLabel.astro';
-import FeatureCard from '../components/FeatureCard.astro';
-import TrainingGroupCard from '../components/TrainingGroupCard.astro';
-import CTASection from '../components/CTASection.astro';
+import Layout from "../layouts/Layout.astro";
+import Navigation from "../components/Navigation.astro";
+import Footer from "../components/Footer.astro";
+import HeroSection from "../components/HeroSection.astro";
+import FeatureCard from "../components/FeatureCard.astro";
+import TrainingGroupCard from "../components/TrainingGroupCard.astro";
+import CTASection from "../components/CTASection.astro";
+
+// Images
+import heroImage from "../assets/images/startfoto.webp";
 ---
 
-<Layout 
+<Layout
   title="Judo Club Oosterzele - Traditioneel Judo voor Alle Leeftijden"
   description="Ontdek de kunst van judo bij Judo Club Oosterzele. Professionele training voor kinderen, jongeren en volwassenen in een moderne dojo."
 >
   <Navigation />
-  
+
   <main>
     <HeroSection
       title="Welkom bij"
-      subtitle="Judo Club Oosterzele"
+      subtitle="Judoclub Oosterzele"
       description="Ontdek de traditionele kunst van judo in onze moderne dojo. Wij bieden professionele training voor alle leeftijden en niveaus, met focus op techniek, respect en persoonlijke ontwikkeling."
       primaryButtonText="Probeer Gratis"
       primaryButtonLink="/contact/"
       secondaryButtonText="Leer Meer"
       secondaryButtonLink="/about/"
-      imageUrl="https://images.pexels.com/photos/8611192/pexels-photo-8611192.jpeg?auto=compress&cs=tinysrgb&w=800"
-      imageAlt="Judo training in onze dojo"
+      imageUrl={heroImage.src}
+      imageAlt="Foto startpagina"
     />
 
     <section class="features">
@@ -39,21 +41,21 @@ import CTASection from '../components/CTASection.astro';
             imageUrl="https://images.pexels.com/photos/1263986/pexels-photo-1263986.jpeg?auto=compress&cs=tinysrgb&w=400"
             imageAlt="Gouden Label Judo Federatie"
           />
-          
+
           <FeatureCard
             title="Ervaren Instructeurs"
             description="Onze gediplomeerde trainers hebben jarenlange ervaring en begeleiden je stap voor stap."
             imageUrl="https://images.pexels.com/photos/7045565/pexels-photo-7045565.jpeg?auto=compress&cs=tinysrgb&w=400"
             imageAlt="Ervaren instructeurs"
           />
-          
+
           <FeatureCard
             title="Alle Leeftijden"
             description="Van 6 jaar tot volwassenen - iedereen is welkom om judo te leren in een veilige omgeving."
             imageUrl="https://images.pexels.com/photos/7045640/pexels-photo-7045640.jpeg?auto=compress&cs=tinysrgb&w=400"
             imageAlt="Alle leeftijden welkom"
           />
-          
+
           <FeatureCard
             title="Wedstrijd & Recreatie"
             description="Of je nu wilt wedstrijden of gewoon voor de fun traint, wij hebben het juiste programma."
@@ -74,7 +76,7 @@ import CTASection from '../components/CTASection.astro';
             price="€180/jaar"
             schedules={[
               { day: "Ma & Wo", time: "18:00 - 19:00" },
-              { day: "Zaterdag", time: "10:00 - 11:00" }
+              { day: "Zaterdag", time: "10:00 - 11:00" },
             ]}
           />
 
@@ -84,7 +86,7 @@ import CTASection from '../components/CTASection.astro';
             price="€180/jaar"
             schedules={[
               { day: "Ma & Wo", time: "19:00 - 20:30" },
-              { day: "Zaterdag", time: "11:00 - 12:30" }
+              { day: "Zaterdag", time: "11:00 - 12:30" },
             ]}
           />
 
@@ -94,7 +96,7 @@ import CTASection from '../components/CTASection.astro';
             price="€220/jaar"
             schedules={[
               { day: "Di & Do", time: "20:00 - 21:30" },
-              { day: "Zaterdag", time: "14:00 - 15:30" }
+              { day: "Zaterdag", time: "14:00 - 15:30" },
             ]}
           />
         </div>
@@ -112,46 +114,45 @@ import CTASection from '../components/CTASection.astro';
   </main>
 
   <Footer />
-<style>
-
-      .features {
-    padding: 4rem 0;
-  }
-
-  .features h2 {
-    text-align: center;
-    margin-bottom: 3rem;
-    font-size: 2.5rem;
-  }
-
-  .features-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
-  }
-
-  .training-groups {
-    padding: 4rem 0;
-    background: var(--color-white);
-  }
-
-  .training-groups h2 {
-    text-align: center;
-    margin-bottom: 3rem;
-    font-size: 2.5rem;
-  }
-
-  .groups-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-  }
-
-  @media (max-width: 768px) {
-    .features-grid,
-    .groups-grid {
-      grid-template-columns: 1fr;
+  <style>
+    .features {
+      padding: 4rem 0;
     }
-  }
-</style>
+
+    .features h2 {
+      text-align: center;
+      margin-bottom: 3rem;
+      font-size: 2.5rem;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+
+    .training-groups {
+      padding: 4rem 0;
+      background: var(--color-white);
+    }
+
+    .training-groups h2 {
+      text-align: center;
+      margin-bottom: 3rem;
+      font-size: 2.5rem;
+    }
+
+    .groups-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    @media (max-width: 768px) {
+      .features-grid,
+      .groups-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </Layout>
