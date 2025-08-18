@@ -1,4 +1,4 @@
 ---
 title: "Home"
-navOrder: ["about", "contact", "groepen", "training"]
+navOrder: ["about", "contact", "groepen"]
 ---
