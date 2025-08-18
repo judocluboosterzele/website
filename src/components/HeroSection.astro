@@ -1,0 +1,121 @@
+---
+interface Props {
+  title: string;
+  subtitle: string;
+  description: string;
+  primaryButtonText: string;
+  primaryButtonLink: string;
+  secondaryButtonText: string;
+  secondaryButtonLink: string;
+  imageUrl: string;
+  imageAlt: string;
+}
+
+const {
+  title,
+  subtitle,
+  description,
+  primaryButtonText,
+  primaryButtonLink,
+  secondaryButtonText,
+  secondaryButtonLink,
+  imageUrl,
+  imageAlt
+} = Astro.props;
+---
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-text">
+        <h1>{title}<br><span class="highlight">{subtitle}</span></h1>
+        <p class="hero-description">{description}</p>
+        <div class="hero-buttons">
+          <a href={primaryButtonLink} class="btn">{primaryButtonText}</a>
+          <a href={secondaryButtonLink} class="btn btn-secondary">{secondaryButtonText}</a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <div class="image-container">
+          <img src={imageUrl} alt={imageAlt} />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    padding: 4rem 0;
+    background: linear-gradient(135deg, var(--color-light) 0%, #ffffff 100%);
+  }
+
+  .hero-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .hero-text h1 {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    color: var(--color-primary);
+  }
+
+  .highlight {
+    color: var(--color-accent);
+  }
+
+  .hero-description {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: var(--color-secondary);
+  }
+
+  .hero-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .hero-image {
+    position: relative;
+  }
+
+  .image-container {
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    transform: rotate(1deg);
+    transition: transform 0.3s ease;
+    aspect-ratio: 16/9;
+  }
+
+  .image-container:hover {
+    transform: rotate(0deg) scale(1.02);
+  }
+
+  .image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  @media (max-width: 768px) {
+    .hero-content {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      text-align: center;
+    }
+
+    .hero-text h1 {
+      font-size: 2.5rem;
+    }
+
+    .hero-buttons {
+      justify-content: center;
+    }
+  }
+</style>

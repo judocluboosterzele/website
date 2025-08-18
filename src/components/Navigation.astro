@@ -1,0 +1,314 @@
+---
+import { getCollection } from 'astro:content';
+
+const pages = await getCollection('pages');
+
+// Organize pages by folder structure
+const pagesByFolder = {};
+const rootPages = [];
+
+pages.forEach(page => {
+  const pathParts = page.slug.split('/');
+  
+  if (pathParts.length === 1) {
+    // Root level page
+    rootPages.push(page);
+  } else {
+    // Page in subfolder
+    const folderName = pathParts[0];
+    if (!pagesByFolder[folderName]) {
+      pagesByFolder[folderName] = {
+        index: null,
+        pages: []
+      };
+    }
+    
+    if (pathParts[1] === 'index') {
+      pagesByFolder[folderName].index = page;
+    } else {
+      pagesByFolder[folderName].pages.push(page);
+    }
+  }
+});
+---
+
+<nav class="navbar">
+  <div class="container nav-container">
+    <a href="/" class="logo">
+      <span>Judo Club</span>
+      <span class="logo-accent">Oosterzele</span>
+    </a>
+    
+    <button class="menu-toggle" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      
+      <!-- Root level pages -->
+      {rootPages.map((page) => (
+        <li>
+          <a href={`/${page.slug}/`}>{page.data.title}</a>
+        </li>
+      ))}
+      
+      <!-- Folder-based pages with submenus -->
+      {Object.entries(pagesByFolder).map(([folderName, folderData]) => (
+        <li class="dropdown">
+          <a href={folderData.index ? `/${folderData.index.slug}/` : '#'} class="dropdown-toggle">
+            {folderData.index ? folderData.index.data.title : folderName.charAt(0).toUpperCase() + folderName.slice(1)}
+            <span class="dropdown-arrow">▼</span>
+          </a>
+          <ul class="dropdown-menu">
+            {folderData.pages.map((page) => (
+              <li>
+                <a href={`/${page.slug}/`}>{page.data.title}</a>
+              </li>
+            ))}
+          </ul>
+        </li>
+      ))}
+    </ul>
+  </div>
+</nav>
+
+<style>
+  .navbar {
+    background: var(--color-white);
+    box-shadow: var(--shadow-sm);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid #e2e8f0;
+  }
+
+  .nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+  }
+
+  .logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-decoration: none;
+    color: var(--color-primary);
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+  }
+
+  .logo-accent {
+    font-size: 0.875rem;
+    color: var(--color-accent);
+    font-weight: 500;
+  }
+
+  .logo:hover {
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-links a {
+    color: var(--color-secondary);
+    font-weight: 500;
+    text-decoration: none;
+    padding: 0.5rem 0;
+    transition: all 0.2s ease;
+    position: relative;
+  }
+
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--color-accent);
+    transition: width 0.3s ease;
+  }
+
+  .nav-links a:hover {
+    color: var(--color-accent);
+    text-decoration: none;
+  }
+
+  .nav-links a:hover::after {
+    width: 100%;
+  }
+
+  .dropdown {
+    position: relative;
+  }
+
+  .dropdown-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .dropdown-arrow {
+    font-size: 0.75rem;
+    transition: transform 0.2s ease;
+  }
+
+  .dropdown:hover .dropdown-arrow {
+    transform: rotate(180deg);
+  }
+
+  .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: var(--color-white);
+    min-width: 200px;
+    box-shadow: var(--shadow-lg);
+    border-radius: var(--border-radius);
+    padding: 0.5rem 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    border: 1px solid #e2e8f0;
+  }
+
+  .dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .dropdown-menu li {
+    list-style: none;
+  }
+
+  .dropdown-menu a {
+    display: block;
+    padding: 0.75rem 1rem;
+    color: var(--color-secondary);
+    text-decoration: none;
+    transition: all 0.2s ease;
+    border-bottom: none;
+  }
+
+  .dropdown-menu a::after {
+    display: none;
+  }
+
+  .dropdown-menu a:hover {
+    background: var(--color-light);
+    color: var(--color-accent);
+    padding-left: 1.5rem;
+  }
+
+  .menu-toggle {
+    display: none;
+    flex-direction: column;
+    background: none;
+    border: none;
+    cursor: pointer;
+    gap: 4px;
+  }
+
+  .menu-toggle span {
+    width: 25px;
+    height: 3px;
+    background-color: var(--color-primary);
+    transition: all 0.3s ease;
+    border-radius: 2px;
+  }
+
+  @media (max-width: 768px) {
+    .menu-toggle {
+      display: flex;
+    }
+
+    .nav-links {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background: var(--color-white);
+      flex-direction: column;
+      padding: 2rem;
+      box-shadow: var(--shadow-md);
+      transform: translateY(-100%);
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      gap: 1rem;
+    }
+
+    .dropdown-menu {
+      position: static;
+      opacity: 1;
+      visibility: visible;
+      transform: none;
+      box-shadow: none;
+      border: none;
+      background: var(--color-light);
+      margin-top: 0.5rem;
+      border-radius: var(--border-radius);
+    }
+
+    .dropdown-arrow {
+      display: none;
+    }
+
+    .nav-links.active {
+      transform: translateY(0);
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .nav-links a {
+      padding: 1rem 0;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    .dropdown-menu a {
+      padding: 0.5rem 1rem;
+      border-bottom: none;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    if (menuToggle && navLinks) {
+      menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+      });
+
+      // Close menu when clicking on a link
+      navLinks.addEventListener('click', (e) => {
+        if (e.target.tagName === 'A') {
+          navLinks.classList.remove('active');
+        }
+      });
+
+      // Close menu when clicking outside
+      document.addEventListener('click', (e) => {
+        if (!menuToggle.contains(e.target) && !navLinks.contains(e.target)) {
+          navLinks.classList.remove('active');
+        }
+      });
+    }
+  });
+</script>

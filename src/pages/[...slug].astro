@@ -1,0 +1,129 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation.astro';
+import Footer from '../components/Footer.astro';
+
+export async function getStaticPaths() {
+  const pages = await getCollection('pages');
+  return pages.map((page) => ({
+    params: { slug: page.slug },
+    props: page,
+  }));
+}
+
+const page = Astro.props;
+const { Content } = await page.render();
+---
+
+<Layout title={page.data.title} description={page.data.description}>
+  <Navigation />
+  
+  <main>
+    {page.data.heroImage && (
+      <section class="page-hero">
+        <div class="container">
+          <div class="hero-image-container">
+            <img src={page.data.heroImage} alt={page.data.heroImageAlt || page.data.title} />
+          </div>
+        </div>
+      </section>
+    )}
+    
+    <section class="page-content">
+      <div class="container">
+        <article class="content-article">
+          <h1>{page.data.title}</h1>
+          <Content />
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .page-hero {
+    padding: 2rem 0;
+  }
+
+  .hero-image-container {
+    position: relative;
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+    height: 250px;
+    aspect-ratio: 16/9;
+    box-shadow: var(--shadow-lg);
+  }
+
+  .hero-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .page-content {
+    padding: 4rem 0;
+    min-height: 60vh;
+  }
+
+  .content-article {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    padding: 3rem;
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid #e2e8f0;
+  }
+
+  .content-article h1 {
+    color: var(--color-primary);
+    border-bottom: 3px solid var(--color-accent);
+    padding-bottom: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .content-article h2 {
+    color: var(--color-primary);
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .content-article h3 {
+    color: var(--color-accent);
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .content-article p {
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+
+  .content-article ul, .content-article ol {
+    margin-bottom: 1.5rem;
+    padding-left: 2rem;
+  }
+
+  .content-article li {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+  }
+
+  .content-article strong {
+    color: var(--color-primary);
+  }
+
+  @media (max-width: 768px) {
+    .hero-image-container {
+      height: 180px;
+    }
+
+    .content-article {
+      padding: 2rem 1rem;
+      margin: 0 1rem;
+    }
+  }
+</style>
