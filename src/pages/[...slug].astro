@@ -1,7 +1,7 @@
 ---
 import { getCollection } from "astro:content";
-import InfoPage from "./Info.astro";
-import LesgeversPage from "./Lesgevers.astro";
+import InfoPage from "../components/InfoPage.astro";
+import LesgeversPage from "../components/LesgeversPage.astro";
 
 export async function getStaticPaths() {
   const pages = await getCollection("pages");
