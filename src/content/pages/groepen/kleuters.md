@@ -1,47 +1,37 @@
 ---
-title: "Beginners"
-description: "Informatie voor nieuwe judoka's"
-heroImage: "https://images.pexels.com/photos/6253312/pexels-photo-6253312.jpeg?auto=compress&cs=tinysrgb&w=800"
-heroImageAlt: "Beginners leren de basis van judo"
+title: "Kleuters (3-6 jaar)"
+description: "Informatie over kleuterjudo"
+heroImage: "groepen/kleuters.webp"
+heroImageAlt: "Kleuters op de tatami"
 ---
 
-# Beginners
+## Over deze groep
 
-## Welkom bij judo!
+Kleuterjudo is bedoeld voor kindjes vanaf 3 jaar. In deze lessen zetten ze hun eerste stapjes op de judomat. De nadruk ligt op spelenderwijs leren bewegen, met speciale aandacht voor valtechnieken. Het doel is niet om meteen perfecte worpen of grepen aan te leren, maar eerder om een basis en gevoel voor judo te ontwikkelen.
 
-Nieuwe leden kunnen op elk moment starten. De eerste twee lessen zijn gratis om te kijken of judo bij je past.
+## Wat leren ze?
 
-## Wat verwachten?
+- Basisbewegingen van het judo
+- Leren vallen op een veilige manier
+- Eerste aanzet tot worpen en houdgrepen
+- Samenwerken en plezier maken met mama of papa
 
-### Eerste Les
-- Kennismaking met de groep
-- Uitleg over judo en dojo-etiquette
-- Basis warming-up en stretching
-- Eenvoudige valtechnieken
+## Samen op de mat
 
-### Eerste Maand
-- Basis judotechnieken
-- Verbeteren van balans en coördinatie
-- Leren van judoterminologie
-- Kennismaking met judopak (gi)
+- De lessen worden gevolgd mét mama of papa op de mat.
+- Dit zorgt voor een leuke en veilige sfeer waarin ouder en kind samen kunnen bewegen en plezier maken.
+- De oefeningen zijn afwisselend mét en zonder ouders, zodat de ouders ook even kunnen pauzeren 😉
 
 ## Wat meebrengen?
 
-**Eerste lessen:**
-- Comfortabele sportkleding (T-shirt en trainingsbroek)
-- Teenslippers voor in de dojo
-- Handdoek en drinkfles
+- Sportkledij (een kimono is nog niet nodig)
+- Enthousiasme!
 
-**Later:**
-- Judopak (gi) - kan bij de club aangekocht worden
-- Judoband (obi) - krijg je van de club
+## Lesuren
 
-## Kosten
+**Zondag**: 9:00 - 9:45\
+(De lessen gaan door in de grote zaal boven.)
 
-- **Eerste 2 lessen**: Gratis
-- **Proefmaand**: €25
-- **Jaarlid**: Zie prijzen per leeftijdsgroep
+## Interesse?
 
-## Vragen?
-
-Neem gerust contact op voor meer informatie of kom langs tijdens een training om te kijken!
+Stuur een mailtje naar: kleuterjudo@judocluboosterzele.be
