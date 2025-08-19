@@ -1,11 +1,12 @@
 ---
-import { getCollection } from 'astro:content';
-import Layout from '../layouts/Layout.astro';
-import Navigation from '../components/Navigation.astro';
-import Footer from '../components/Footer.astro';
+import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
+import Layout from "../layouts/Layout.astro";
+import Navigation from "../components/Navigation.astro";
+import Footer from "../components/Footer.astro";
 
 export async function getStaticPaths() {
-  const pages = await getCollection('pages');
+  const pages = await getCollection("pages");
   return pages.map((page) => ({
     params: { slug: page.slug },
     props: page,
@@ -14,27 +15,80 @@ export async function getStaticPaths() {
 
 const page = Astro.props;
 const { Content } = await page.render();
+
+// Get page type (defaults to 'info' if not specified)
+const pageType = page.data.type || "info";
+
+// Dynamic import for hero image if it exists
+let heroImage: any = null;
+if (page.data.heroImage) {
+  try {
+    const images = import.meta.glob(
+      "/src/assets/images/**/*.{jpeg,jpg,png,gif,webp}"
+    );
+    const imagePath = `/src/assets/images/${page.data.heroImage}`;
+    if (images[imagePath]) {
+      const imageModule = (await images[imagePath]()) as any;
+      heroImage = imageModule.default;
+    }
+  } catch (error) {
+    console.error("Error loading hero image:", error);
+  }
+}
 ---
 
 <Layout title={page.data.title} description={page.data.description}>
   <Navigation />
-  
-  <main>
-    {page.data.heroImage && (
-      <section class="page-hero">
-        <div class="container">
-          <div class="hero-image-container">
-            <img src={page.data.heroImage} alt={page.data.heroImageAlt || page.data.title} />
+
+  <main class={`page-type-${pageType}`}>
+    {
+      heroImage && (
+        <section class="page-hero">
+          <div class="container">
+            <div class="hero-image-container">
+              <Image
+                src={heroImage}
+                alt={page.data.heroImageAlt || page.data.title}
+                width={800}
+                height={450}
+                format="webp"
+                quality={80}
+              />
+            </div>
           </div>
-        </div>
-      </section>
-    )}
-    
+        </section>
+      )
+    }
+
     <section class="page-content">
       <div class="container">
-        <article class="content-article">
+        <article class={`content-article content-article--${pageType}`}>
+          {
+            pageType === "lesgevers" && (
+              <div class="page-type-badge">
+                <span>Lesgevers</span>
+              </div>
+            )
+          }
+
           <h1>{page.data.title}</h1>
+
+          {
+            pageType === "lesgevers" && page.data.subtitle && (
+              <p class="subtitle">{page.data.subtitle}</p>
+            )
+          }
+
           <Content />
+
+          {
+            pageType === "lesgevers" && page.data.contact && (
+              <div class="contact-info">
+                <h3>Contact</h3>
+                <p>{page.data.contact}</p>
+              </div>
+            )
+          }
         </article>
       </div>
     </section>
@@ -47,15 +101,15 @@ const { Content } = await page.render();
   .page-hero {
     padding: 2rem 0;
   }
-  
+
   .hero-image-container {
     position: relative;
     border-radius: var(--border-radius-lg);
     overflow: hidden;
-    aspect-ratio: 16 / 9;  /* keeps correct ratio */
+    aspect-ratio: 16 / 9;
     width: 100%;
-    max-width: 800px;      /* same as content width */
-    margin: 0 auto;        /* center horizontally */
+    max-width: 800px;
+    margin: 0 auto;
     box-shadow: var(--shadow-lg);
   }
 
@@ -79,6 +133,48 @@ const { Content } = await page.render();
     border-radius: var(--border-radius-lg);
     box-shadow: var(--shadow-sm);
     border: 1px solid #e2e8f0;
+    position: relative;
+  }
+
+  /* Page type specific styling */
+  .content-article--lesgevers {
+    border-left: 4px solid var(--color-accent);
+  }
+
+  .page-type-badge {
+    position: absolute;
+    top: -10px;
+    right: 2rem;
+    background: var(--color-accent);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius);
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .subtitle {
+    font-size: 1.25rem;
+    color: var(--color-accent);
+    font-style: italic;
+    margin-bottom: 2rem;
+    border-left: 3px solid var(--color-accent);
+    padding-left: 1rem;
+  }
+
+  .contact-info {
+    margin-top: 3rem;
+    padding: 2rem;
+    background: #f8fafc;
+    border-radius: var(--border-radius);
+    border: 1px solid #e2e8f0;
+  }
+
+  .contact-info h3 {
+    margin-top: 0;
+    color: var(--color-primary);
   }
 
   .content-article h1 {
@@ -86,6 +182,10 @@ const { Content } = await page.render();
     border-bottom: 3px solid var(--color-accent);
     padding-bottom: 1rem;
     margin-bottom: 2rem;
+  }
+
+  .content-article--lesgevers h1 {
+    border-bottom-color: var(--color-accent);
   }
 
   .content-article h2 {
@@ -105,7 +205,8 @@ const { Content } = await page.render();
     margin-bottom: 1.5rem;
   }
 
-  .content-article ul, .content-article ol {
+  .content-article ul,
+  .content-article ol {
     margin-bottom: 1.5rem;
     padding-left: 2rem;
   }
@@ -119,6 +220,11 @@ const { Content } = await page.render();
     color: var(--color-primary);
   }
 
+  /* Different background for lesgevers pages */
+  .page-type-lesgevers {
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  }
+
   @media (max-width: 768px) {
     .hero-image-container {
       height: 180px;
@@ -127,6 +233,10 @@ const { Content } = await page.render();
     .content-article {
       padding: 2rem 1rem;
       margin: 0 1rem;
+    }
+
+    .page-type-badge {
+      right: 1rem;
     }
   }
 </style>
