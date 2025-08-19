@@ -1,5 +1,5 @@
 ---
-
+import "../styles/footer.css";
 ---
 
 <footer class="footer">
@@ -51,57 +51,3 @@
     yearSpan.textContent = String(new Date().getFullYear());
   }
 </script>
-
-<style>
-  .footer {
-    background: var(--color-primary);
-    color: white;
-    margin-top: 4rem;
-  }
-
-  .footer-content {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-    padding: 3rem 0 2rem;
-  }
-
-  .footer-section h3 {
-    color: white;
-    margin-bottom: 1rem;
-    font-size: 1.5rem;
-  }
-
-  .footer-section h4 {
-    color: white;
-    margin-bottom: 1rem;
-    font-size: 1.1rem;
-  }
-
-  .footer-section p {
-    color: #cbd5e1;
-    line-height: 1.6;
-  }
-
-  .footer-section strong {
-    color: white;
-  }
-
-  .footer-bottom {
-    border-top: 1px solid #374151;
-    padding: 2rem 0;
-    text-align: center;
-  }
-
-  .footer-bottom p {
-    color: #9ca3af;
-    margin: 0;
-  }
-
-  @media (max-width: 768px) {
-    .footer-content {
-      grid-template-columns: 1fr;
-      text-align: center;
-    }
-  }
-</style>

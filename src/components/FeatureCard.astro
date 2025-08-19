@@ -1,5 +1,7 @@
 ---
 import { Image } from "astro:assets";
+import "../styles/feature.css";
+
 interface Props {
   title: string;
   description: string;
@@ -27,34 +29,3 @@ const {
   <h3>{title}</h3>
   <p>{description}</p>
 </div>
-
-<style>
-  .feature-card {
-    text-align: center;
-    padding: 2.5rem;
-  }
-
-  .feature-image {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-    border-radius: var(--border-radius);
-    margin-bottom: 1.5rem;
-    transition: transform 0.3s ease;
-  }
-
-  .feature-card:hover .feature-image {
-    transform: scale(1.05);
-  }
-
-  .feature-card h3 {
-    color: var(--color-primary);
-    margin-bottom: 1.5rem;
-    font-size: 1.3rem;
-  }
-
-  .feature-card p {
-    font-size: 1.1rem;
-    line-height: 1.6;
-  }
-</style>

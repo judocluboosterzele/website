@@ -1,6 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Navigation from "../components/Navigation.astro";
+import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
 import HeroSection from "../components/HeroSection.astro";
 import FeatureCard from "../components/FeatureCard.astro";
@@ -15,7 +15,7 @@ import heroImage from "../assets/images/hero.png";
   title="Judoclub Oosterzele - Traditioneel Judo voor Alle Leeftijden"
   description="Ontdek de kunst van judo bij Judoclub Oosterzele. Professionele training voor kinderen, jongeren en volwassenen in een moderne dojo."
 >
-  <Navigation />
+  <Navbar />
 
   <main>
     <HeroSection
@@ -75,7 +75,6 @@ import heroImage from "../assets/images/hero.png";
           <TrainingGroupCard
             title="Jeugd (6-12 jaar)"
             description="Spelenderwijs leren van judotechnieken, coördinatie en sociale vaardigheden."
-            price="€180/jaar"
             schedules={[
               { day: "Ma & Wo", time: "18:00 - 19:00" },
               { day: "Zaterdag", time: "10:00 - 11:00" },
@@ -85,7 +84,6 @@ import heroImage from "../assets/images/hero.png";
           <TrainingGroupCard
             title="Jongeren (13-17 jaar)"
             description="Technische training, wedstrijdvoorbereiding en conditietraining voor tieners."
-            price="€180/jaar"
             schedules={[
               { day: "Ma & Wo", time: "19:00 - 20:30" },
               { day: "Zaterdag", time: "11:00 - 12:30" },
@@ -95,7 +93,6 @@ import heroImage from "../assets/images/hero.png";
           <TrainingGroupCard
             title="Volwassenen (18+)"
             description="Recreatief of wedstrijdjudo, afhankelijk van je persoonlijke doelen."
-            price="€220/jaar"
             schedules={[
               { day: "Di & Do", time: "20:00 - 21:30" },
               { day: "Zaterdag", time: "14:00 - 15:30" },
@@ -116,45 +113,4 @@ import heroImage from "../assets/images/hero.png";
   </main>
 
   <Footer />
-  <style>
-    .features {
-      padding: 4rem 0;
-    }
-
-    .features h2 {
-      text-align: center;
-      margin-bottom: 3rem;
-      font-size: 2.5rem;
-    }
-
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 2rem;
-    }
-
-    .training-groups {
-      padding: 4rem 0;
-      background: var(--color-white);
-    }
-
-    .training-groups h2 {
-      text-align: center;
-      margin-bottom: 3rem;
-      font-size: 2.5rem;
-    }
-
-    .groups-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-    }
-
-    @media (max-width: 768px) {
-      .features-grid,
-      .groups-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
 </Layout>

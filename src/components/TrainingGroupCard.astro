@@ -1,56 +1,24 @@
 ---
+import "../styles/traininggroupcard.css";
 interface Props {
   title: string;
   description: string;
-  price: string;
   schedules: Array<{ day: string; time: string }>;
 }
 
-const { title, description, price, schedules } = Astro.props;
+const { title, description, schedules } = Astro.props;
 ---
 
 <div class="group-card card">
   <h3>{title}</h3>
   <div class="schedule">
-    {schedules.map(schedule => (
-      <p><strong>{schedule.day}:</strong> {schedule.time}</p>
-    ))}
+    {
+      schedules.map((schedule) => (
+        <p>
+          <strong>{schedule.day}:</strong> {schedule.time}
+        </p>
+      ))
+    }
   </div>
   <p>{description}</p>
-  <div class="price">{price}</div>
 </div>
-
-<style>
-  .group-card {
-    position: relative;
-  }
-
-  .group-card h3 {
-    color: var(--color-accent);
-    margin-bottom: 1rem;
-  }
-
-  .schedule {
-    margin-bottom: 1rem;
-    padding: 1rem;
-    background: var(--color-light);
-    border-radius: var(--border-radius);
-  }
-
-  .schedule p {
-    margin: 0.25rem 0;
-    color: var(--color-primary);
-  }
-
-  .price {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    background: var(--color-accent);
-    color: white;
-    padding: 0.5rem 1rem;
-    border-radius: var(--border-radius);
-    font-weight: 600;
-    font-size: 0.9rem;
-  }
-</style>
