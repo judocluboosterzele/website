@@ -10,9 +10,9 @@ const pages = defineCollection({
     heroImageAlt: z.string().optional(),
     order: z.number().optional(), // fallback order
     navOrder: z.array(z.string()).optional(), // explicit ordering (root & folders)
-    subtitle: z.string().optional(), // For lesgevers pages
-    contact: z.string().optional(), // For lesgevers pages
   }),
 });
 
-export const collections = { pages };
+export const collections = {
+  pages: pages,
+};

@@ -13,7 +13,9 @@ Al deze gedragscodes hangen ook uit in de club als poster.
 
 ## Judoka
 
-![test](../../../assets/images/api.png)
+![test](../../../assets/images/jigoro.jpg)
+
+<!-- TODO -->
 
 ## Ouders
 

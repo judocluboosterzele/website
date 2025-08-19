@@ -5,18 +5,19 @@ heroImage: "https://images.pexels.com/photos/4761663/pexels-photo-4761663.jpeg?a
 heroImageAlt: "Onze moderne dojo faciliteiten"
 ---
 
-# Contact
+<!-- TODO -->
+<!-- # Contact
 
 ## Dojo Locatie
 
-**Sporthal De Bruul**  
-Bruulstraat 15  
-9968 Oosterzele  
+**Sporthal De Bruul**
+Bruulstraat 15
+9968 Oosterzele
 België
 
 ## Contactgegevens
 
-**Email**: info@judocluboosterzele.be  
+**Email**: info@judocluboosterzele.be
 **Telefoon**: +32 9 123 45 67
 
 ## Trainingstijden
@@ -34,4 +35,4 @@ Inschrijvingen zijn het hele jaar door mogelijk. Neem contact op om een gratis p
 
 ## Bereikbaarheid
 
-De dojo is gemakkelijk bereikbaar met de auto en er is voldoende gratis parkeergelegenheid beschikbaar.
+De dojo is gemakkelijk bereikbaar met de auto en er is voldoende gratis parkeergelegenheid beschikbaar. -->

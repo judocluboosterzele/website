@@ -6,10 +6,4 @@ heroImageAlt: "Verschillende leeftijdsgroepen tijdens training"
 navOrder: ["kleuters", "benjamins", "jongeren", "volwassenen"]
 ---
 
-# Onze Trainingsgroepen
-
-Wij bieden training voor alle leeftijden en niveaus. Elke groep heeft zijn eigen programma dat is afgestemd op de behoeften en mogelijkheden van de deelnemers.
-
-## Overzicht van alle groepen
-
-Ontdek welke groep het beste bij jou past en kom langs voor een gratis proefles.
+<!-- TODO -->
