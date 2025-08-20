@@ -105,12 +105,10 @@ Ook heb je het recht om de verstrekte gegevens door ons te laten overdragen aan 
 
 Mocht je een klacht hebben over de verwerking van je persoonsgegevens dan vragen wij je hierover direct contact met ons op te nemen.
 
-Je hebt altijd het recht een klacht in te dienen bij de Gegevensbeschermingsautoriteit (GBA):
+Je hebt altijd het recht een klacht in te dienen bij de [Gegevensbeschermingsautoriteit (GBA)](https://www.gegevensbeschermingsautoriteit.be):
 
 Drukpersstraat 35\
 1000 Brussel
-
-https://www.gegevensbeschermingsautoriteit.be
 
 ## 11. Wijziging privacyverklaring
 
