@@ -9,6 +9,10 @@ import CTASection from "../components/CTASection.astro";
 
 // Images
 import heroImage from "../assets/images/hero.png";
+import goudenLabel from "../assets/images/feature/goudenlabel.png";
+import gezondSporten from "../assets/images/feature/gezondsporten.png";
+import wedstrijd from "../assets/images/feature/wedstrijd.png";
+import leeftijden from "../assets/images/feature/leeftijden.png";
 ---
 
 <Layout
@@ -21,9 +25,9 @@ import heroImage from "../assets/images/hero.png";
     <HeroSection
       title="Welkom bij"
       subtitle="Judoclub Oosterzele"
-      description="Ontdek de traditionele kunst van judo in onze moderne dojo. Wij bieden professionele training voor alle leeftijden en niveaus, met focus op techniek, respect en persoonlijke ontwikkeling."
+      description="Ontdek de traditionele kunst van judo in onze dojo. Wij bieden professionele training voor alle leeftijden en niveaus, met focus op techniek, respect en persoonlijke ontwikkeling."
       primaryButtonText="Probeer Gratis"
-      primaryButtonLink="/contact/"
+      primaryButtonLink="/about/proeflessen"
       secondaryButtonText="Leer Meer"
       secondaryButtonLink="/about/"
       imageUrl={heroImage}
@@ -37,31 +41,35 @@ import heroImage from "../assets/images/hero.png";
         <div class="features-grid">
           <FeatureCard
             title="Erkend met Gouden Label"
-            description="Onze club is officieel erkend door de Vlaamse Judo Federatie met het prestigieuze Gouden Label voor kwaliteit en veiligheid."
-            imageUrl={heroImage}
-            imageAlt="Gouden Label Judo Federatie"
+            description="Onze club is drager van de hoogste erkenning van Judo Vlaanderen: het Jeugdjudo Gouden Label, voor een jeugdvriendelijke en stimulerende omgeving."
+            imageUrl={goudenLabel}
+            imageAlt="Gouden Label Judo Vlaanderen"
             loading="eager"
           />
 
-          <FeatureCard
-            title="Ervaren Instructeurs"
-            description="Onze gediplomeerde trainers hebben jarenlange ervaring en begeleiden je stap voor stap."
-            imageUrl={heroImage}
-            imageAlt="Ervaren instructeurs"
-            loading="eager"
-          />
+          <a
+            href="https://www.judovlaanderen.be/gezond-ethisch-sporten/gezond-sporten/"
+          >
+            <FeatureCard
+              title="Gezond Sporten"
+              description="Bij Judoclub Oosterzele volgen we de richtlijnen voor Gezond en Ethisch Sporten zoals uitgezet door Judo Vlaanderen."
+              imageUrl={gezondSporten}
+              imageAlt="Logo Gezond Sporten"
+              loading="eager"
+            />
+          </a>
 
           <FeatureCard
             title="Alle Leeftijden"
-            description="Van 6 jaar tot volwassenen - iedereen is welkom om judo te leren in een veilige omgeving."
-            imageUrl={heroImage}
+            description="Van 3 jaar tot volwassenen - iedereen is welkom om judo te leren in een veilige omgeving."
+            imageUrl={leeftijden}
             imageAlt="Alle leeftijden welkom"
           />
 
           <FeatureCard
             title="Wedstrijd & Recreatie"
-            description="Of je nu wilt wedstrijden of gewoon voor de fun traint, wij hebben het juiste programma."
-            imageUrl={heroImage}
+            description="Of je nu wilt deelnemen aan wedstrijden of gewoon voor de fun traint, wij hebben het juiste programma."
+            imageUrl={wedstrijd}
             imageAlt="Wedstrijd en recreatie"
           />
         </div>
@@ -72,32 +80,45 @@ import heroImage from "../assets/images/hero.png";
       <div class="container">
         <h2>Onze Trainingsgroepen</h2>
         <div class="groups-grid">
-          <TrainingGroupCard
-            title="Jeugd (6-12 jaar)"
-            description="Spelenderwijs leren van judotechnieken, coördinatie en sociale vaardigheden."
-            schedules={[
-              { day: "Ma & Wo", time: "18:00 - 19:00" },
-              { day: "Zaterdag", time: "10:00 - 11:00" },
-            ]}
-          />
-
-          <TrainingGroupCard
-            title="Jongeren (13-17 jaar)"
-            description="Technische training, wedstrijdvoorbereiding en conditietraining voor tieners."
-            schedules={[
-              { day: "Ma & Wo", time: "19:00 - 20:30" },
-              { day: "Zaterdag", time: "11:00 - 12:30" },
-            ]}
-          />
-
-          <TrainingGroupCard
-            title="Volwassenen (18+)"
-            description="Recreatief of wedstrijdjudo, afhankelijk van je persoonlijke doelen."
-            schedules={[
-              { day: "Di & Do", time: "20:00 - 21:30" },
-              { day: "Zaterdag", time: "14:00 - 15:30" },
-            ]}
-          />
+          <a href="/groepen/kleuters" class="group-card-link">
+            <TrainingGroupCard
+              title="Kleuters (3-6 jaar)"
+              description="Spelenderwijs leren bewegen, met speciale aandacht voor valtechnieken."
+              schedules={[{ day: "Zondag", time: "9:00 - 9:45" }]}
+            />
+          </a>
+          <a href="/groepen/benjamins" class="group-card-link">
+            <TrainingGroupCard
+              title="Benjamins (6-8 jaar)"
+              description="Basis judotechnieken, respect voor anderen, coördinatie en balans."
+              schedules={[
+                { day: "Woensdag", time: "17:45 - 18:30" },
+                { day: "Zondag", time: "9:00 - 9:45" },
+              ]}
+            />
+          </a>
+          <a href="/groepen/jongeren" class="group-card-link">
+            <TrainingGroupCard
+              title="Jongeren (8-14 jaar)"
+              description="Oefengevechten op grond en rechtstaand, fysieke opwarming, gevorderde judotechniek."
+              schedules={[
+                { day: "Woensdag", time: "18:30 - 19:30" },
+                { day: "Vrijdag", time: "19:30 - 20:30" },
+                { day: "Zondag", time: "9:45 - 10:45" },
+              ]}
+            />
+          </a>
+          <a href="/groepen/volwassenen" class="group-card-link">
+            <TrainingGroupCard
+              title="Volwassenen (14+)"
+              description="Recreatief of wedstrijdjudo, afhankelijk van je persoonlijke doelen. Geavanceerde judotechnieken."
+              schedules={[
+                { day: "Woensdag", time: "19:30 - 21:00" },
+                { day: "Vrijdag", time: "19:30 - 21:00" },
+                { day: "Zondag", time: "10:45 - 12:00" },
+              ]}
+            />
+          </a>
         </div>
       </div>
     </section>
@@ -105,10 +126,10 @@ import heroImage from "../assets/images/hero.png";
     <CTASection
       title="Klaar om te Beginnen?"
       description="Kom langs voor een gratis proefles en ontdek wat judo voor jou kan betekenen. Geen ervaring vereist!"
-      primaryButtonText="Contact Opnemen"
-      primaryButtonLink="/contact/"
-      secondaryButtonText="Trainingsschema"
-      secondaryButtonLink="/groepen/"
+      primaryButtonText="Probeer Gratis"
+      primaryButtonLink="/about/proeflessen"
+      secondaryButtonText="Lesuren"
+      secondaryButtonLink="/about/lesuren-locatie"
     />
   </main>
 
