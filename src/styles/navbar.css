@@ -19,6 +19,15 @@
 .navbar-brand {
   font-size: 1.5rem;
   font-weight: bold;
+  display: flex;
+  align-items: center; /* vertically center the text roughly */
+}
+
+.navbar-brand .logo {
+  width: 32px;
+  height: auto;
+  margin-right: 0.75rem; /* more space between logo and text */
+  transform: translateY(4px); /* move logo slightly down to align with text */
 }
 
 .brand-link {
@@ -135,11 +144,6 @@
   position: relative;
 }
 
-.has-dropdown:hover,
-.has-dropdown:focus-within {
-  /* Keep hover state active */
-}
-
 .dropdown-menu {
   position: absolute;
   top: calc(100% + 5px);
@@ -225,7 +229,7 @@
   .navbar-nav {
     flex-direction: column;
     gap: 0;
-    padding: 1rem 0;
+    padding: 0 0;
   }
 
   .nav-item-row {
