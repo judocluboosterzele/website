@@ -3,7 +3,7 @@
   --color-secondary: #64748b;
   --color-accent: #3b82f6;
   --color-light: #f8fafc;
-  --color-white: #ffffff;
+  --color-white: #fff;
   --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
   --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1),
@@ -86,7 +86,6 @@ a {
 
 a:hover {
   color: var(--color-primary);
-  text-decoration: underline;
 }
 
 .container {
@@ -99,12 +98,12 @@ a:hover {
   display: inline-block;
   padding: 0.75rem 1.5rem;
   background-color: var(--color-accent);
-  color: white;
+  color: #fff;
   border-radius: var(--border-radius);
   font-weight: 500;
   text-decoration: none;
   transition: all 0.3s ease;
-  border: none;
+  border: 0;
   cursor: pointer;
   box-shadow: var(--shadow-sm);
 }
@@ -113,7 +112,6 @@ a:hover {
   background-color: var(--color-primary);
   transform: translateY(-1px);
   box-shadow: var(--shadow-md);
-  text-decoration: none;
   color: white;
 }
 
@@ -129,7 +127,7 @@ a:hover {
 }
 
 .card {
-  background: white;
+  background: #fff;
   padding: 2rem;
   border-radius: var(--border-radius-lg);
   box-shadow: var(--shadow-sm);

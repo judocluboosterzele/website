@@ -28,7 +28,7 @@
 .content-article {
   max-width: 800px;
   margin: 0 auto;
-  background: white;
+  background: #fff;
   padding: 3rem;
   border-radius: var(--border-radius-lg);
   box-shadow: var(--shadow-sm);

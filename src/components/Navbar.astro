@@ -3,79 +3,58 @@ import { getCollection } from "astro:content";
 import type { CollectionEntry } from "astro:content";
 import "../styles/navbar.css";
 
-// Get all pages from the content collection
 const allPages = await getCollection("pages");
 
-// Helper function to build the navigation structure
 function buildNavStructure(pages: CollectionEntry<"pages">[]) {
-  const nav = [];
-  const processed = new Set();
+  type NavItem = {
+    title: string;
+    slug: string;
+    hasChildren: boolean;
+    children: { title: string; slug: string }[];
+  };
 
-  // Debug: Log all pages to see what we have
-  console.log(
-    "All pages found:",
-    pages.map((p) => ({ slug: p.slug, title: p.data.title }))
-  );
+  const nav: NavItem[] = [];
+  const processed = new Set<string>();
 
-  // Find all folders by looking for pages that contain '/'
   const folders = new Set<string>();
   pages.forEach((page) => {
     if (page.slug.includes("/")) {
-      const folderPath = page.slug.split("/")[0];
-      folders.add(folderPath);
+      folders.add(page.slug.split("/")[0]);
     }
   });
 
-  console.log("Folders found:", Array.from(folders));
-
-  // Process each folder
   folders.forEach((folderName) => {
-    // Look for folder index file first
     const indexFile = pages.find((page) => page.slug === `${folderName}/index`);
-    // Look for standalone page with same name as folder
     const standaloneFile = pages.find((page) => page.slug === folderName);
-
-    // Find all files in this folder (excluding the index)
     const folderFiles = pages.filter(
       (page) =>
         page.slug.startsWith(`${folderName}/`) &&
         page.slug !== `${folderName}/index` &&
-        page.slug.split("/").length === 2 // Only direct children
+        page.slug.split("/").length === 2
     );
 
-    console.log(`Folder "${folderName}":`, {
-      hasIndex: !!indexFile,
-      hasStandalone: !!standaloneFile,
-      indexTitle: indexFile?.data.title,
-      standaloneTitle: standaloneFile?.data.title,
-      children: folderFiles.map((f) => ({ slug: f.slug, title: f.data.title })),
-    });
-
-    // Determine which file to use for the folder title and settings
     const titleFile = indexFile || standaloneFile;
 
     if (titleFile) {
-      // Mark the files as processed so they don't appear twice
       if (indexFile) processed.add(indexFile.slug);
       if (standaloneFile) processed.add(standaloneFile.slug);
 
-      // Sort folder files
-      if (titleFile.data.navOrder) {
+      if (titleFile.data?.navOrder) {
         folderFiles.sort((a, b) => {
           const aSlug = a.slug.replace(`${folderName}/`, "");
           const bSlug = b.slug.replace(`${folderName}/`, "");
-          const aIndex = titleFile.data.navOrder.indexOf(aSlug);
-          const bIndex = titleFile.data.navOrder.indexOf(bSlug);
+          const aIndex = titleFile.data.navOrder?.indexOf(aSlug) ?? -1;
+          const bIndex = titleFile.data.navOrder?.indexOf(bSlug) ?? -1;
 
           if (aIndex === -1 && bIndex === -1)
-            return (a.data.order || 999) - (b.data.order || 999);
+            return (a.data.order ?? 999) - (b.data.order ?? 999);
           if (aIndex === -1) return 1;
           if (bIndex === -1) return -1;
           return aIndex - bIndex;
         });
       } else {
         folderFiles.sort(
-          (a, b) => (a.data.order || 999) - (b.data.order || 999)
+          (a, b) => (a.data.order ?? 999) - (b.data.order ?? 999)
         );
       }
 
@@ -89,29 +68,10 @@ function buildNavStructure(pages: CollectionEntry<"pages">[]) {
         })),
       });
 
-      // Mark all folder files as processed
-      folderFiles.forEach((file) => processed.add(file.slug));
-    } else if (folderFiles.length > 0) {
-      // No index or standalone file, but we have files in the folder
-      // Use the folder name as title and sort files by order
-      folderFiles.sort((a, b) => (a.data.order || 999) - (b.data.order || 999));
-
-      nav.push({
-        title: folderName.charAt(0).toUpperCase() + folderName.slice(1), // Capitalize folder name
-        slug: folderName,
-        hasChildren: folderFiles.length > 0,
-        children: folderFiles.map((file) => ({
-          title: file.data.title,
-          slug: file.slug,
-        })),
-      });
-
-      // Mark all folder files as processed
       folderFiles.forEach((file) => processed.add(file.slug));
     }
   });
 
-  // Add remaining top-level pages (not in folders and not processed yet)
   const topLevelPages = pages.filter(
     (page) =>
       !page.slug.includes("/") &&
@@ -119,9 +79,8 @@ function buildNavStructure(pages: CollectionEntry<"pages">[]) {
       !processed.has(page.slug)
   );
 
-  topLevelPages.sort((a, b) => (a.data.order || 999) - (b.data.order || 999));
+  topLevelPages.sort((a, b) => (a.data.order ?? 999) - (b.data.order ?? 999));
 
-  // Add top-level pages to navigation
   topLevelPages.forEach((page) => {
     nav.push({
       title: page.data.title,
@@ -131,20 +90,17 @@ function buildNavStructure(pages: CollectionEntry<"pages">[]) {
     });
   });
 
-  // Final sorting using root index navOrder if available
   const rootIndex = pages.find((p) => p.slug === "index");
-  if (rootIndex?.data.navOrder) {
+  if (rootIndex?.data?.navOrder) {
     nav.sort((a, b) => {
-      const aIndex = rootIndex.data.navOrder.indexOf(a.slug);
-      const bIndex = rootIndex.data.navOrder.indexOf(b.slug);
-
+      const aIndex = rootIndex.data.navOrder?.indexOf(a.slug) ?? -1;
+      const bIndex = rootIndex.data.navOrder?.indexOf(b.slug) ?? -1;
       if (aIndex === -1 && bIndex === -1) return 0;
       if (aIndex === -1) return 1;
       if (bIndex === -1) return -1;
       return aIndex - bIndex;
     });
   } else {
-    // Sort by order property
     nav.sort((a, b) => {
       const aPage = pages.find(
         (p) => p.slug === a.slug || p.slug === a.slug + "/index"
@@ -152,7 +108,7 @@ function buildNavStructure(pages: CollectionEntry<"pages">[]) {
       const bPage = pages.find(
         (p) => p.slug === b.slug || p.slug === b.slug + "/index"
       );
-      return (aPage?.data.order || 999) - (bPage?.data.order || 999);
+      return (aPage?.data.order ?? 999) - (bPage?.data.order ?? 999);
     });
   }
 
@@ -160,19 +116,14 @@ function buildNavStructure(pages: CollectionEntry<"pages">[]) {
 }
 
 const navItems = buildNavStructure(allPages);
-
-// Debug: Log the navigation structure
-console.log("Navigation items:", JSON.stringify(navItems, null, 2));
 ---
 
 <nav class="navbar">
   <div class="navbar-container">
-    <!-- Logo/Brand -->
     <div class="navbar-brand">
-      <a href="/" class="brand-link"> Judoclub Oosterzele </a>
+      <a href="/" class="brand-link">Judoclub Oosterzele</a>
     </div>
 
-    <!-- Mobile menu button -->
     <button
       class="mobile-menu-button"
       id="mobile-menu-button"
@@ -183,19 +134,35 @@ console.log("Navigation items:", JSON.stringify(navItems, null, 2));
       <span class="hamburger-line"></span>
     </button>
 
-    <!-- Navigation items -->
     <div class="navbar-menu" id="navbar-menu">
       <ul class="navbar-nav">
         {
           navItems.map((item) => (
-            <li
-              class="nav-item"
-              class:list={[{ "has-dropdown": item.hasChildren }]}
-            >
-              <a href={`/${item.slug}`} class="nav-link">
-                {item.title}
-                {item.hasChildren && <span class="dropdown-arrow">▼</span>}
-              </a>
+            <li class:list={["nav-item", { "has-dropdown": item.hasChildren }]}>
+              <div class="nav-item-row">
+                <a href={`/${item.slug}`} class="nav-link">
+                  {item.title}
+                </a>
+                {item.hasChildren && (
+                  <button class="dropdown-arrow" aria-label="Toggle submenu">
+                    <svg
+                      width="12"
+                      height="12"
+                      viewBox="0 0 12 12"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M3 4.5L6 7.5L9 4.5"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </button>
+                )}
+              </div>
               {item.hasChildren && (
                 <ul class="dropdown-menu">
                   {item.children.map((child) => (
@@ -219,47 +186,38 @@ console.log("Navigation items:", JSON.stringify(navItems, null, 2));
   document.addEventListener("DOMContentLoaded", () => {
     const mobileMenuButton = document.getElementById("mobile-menu-button");
     const navbarMenu = document.getElementById("navbar-menu");
+    const dropdownArrows = document.querySelectorAll(".dropdown-arrow");
 
     if (mobileMenuButton && navbarMenu) {
-      // Mobile menu toggle
       mobileMenuButton.addEventListener("click", () => {
+        mobileMenuButton.classList.toggle("open");
         navbarMenu.classList.toggle("active");
       });
 
-      // Close mobile menu when clicking outside
       document.addEventListener("click", (e) => {
+        const target = e.target as Node;
         if (
-          !mobileMenuButton.contains(e.target) &&
-          !navbarMenu.contains(e.target)
+          !mobileMenuButton.contains(target) &&
+          !navbarMenu.contains(target)
         ) {
+          mobileMenuButton.classList.remove("open");
           navbarMenu.classList.remove("active");
         }
       });
     }
 
-    // Mobile dropdown functionality
-    const dropdownItems = document.querySelectorAll(".has-dropdown");
-
-    dropdownItems.forEach((item) => {
-      const link = item.querySelector(".nav-link");
-
-      // Only add click handler on mobile
-      if (link && window.innerWidth <= 768) {
-        link.addEventListener("click", (e) => {
-          e.preventDefault();
-          item.classList.toggle("mobile-expanded");
-        });
-      }
-    });
-
-    // Handle window resize
-    window.addEventListener("resize", () => {
-      if (window.innerWidth > 768) {
-        // Remove mobile classes on desktop
-        dropdownItems.forEach((item) => {
-          item.classList.remove("mobile-expanded");
-        });
-      }
+    // Handle dropdown arrow clicks on mobile
+    dropdownArrows.forEach((arrow) => {
+      arrow.addEventListener("click", (e) => {
+        e.stopPropagation();
+        e.preventDefault();
+        const parent = (e.currentTarget as HTMLElement).closest(
+          ".has-dropdown"
+        );
+        if (parent) {
+          parent.classList.toggle("mobile-expanded");
+        }
+      });
     });
   });
 </script>
