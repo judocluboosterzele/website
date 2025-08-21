@@ -12,6 +12,44 @@ interface Props {
 
 const { page, heroImage } = Astro.props;
 const { Content } = await page.render();
+
+// 1. Haal de onbewerkte lesgeversdata op uit de frontmatter.
+const lesgeversData = page.data.lesgevers || [];
+
+// 2. Gebruik `import.meta.glob` om alle mogelijke afbeeldingen te vinden.
+// Dit is de standaardmanier in Astro/Vite om dynamisch met afbeeldingen te werken.
+// Het geeft Astro de informatie die het nodig heeft om de afbeeldingen te optimaliseren.
+const allLesgeverImages = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/assets/images/lesgevers/*"
+);
+
+// 3. Koppel de data aan de juiste, geïmporteerde afbeelding.
+const lesgeversWithImages = await Promise.all(
+  lesgeversData.map(async (lesgever: any) => {
+    // We bouwen het volledige, verwachte pad naar de afbeelding op.
+    const imagePath = `/src/assets/images/lesgevers/${lesgever.image}`;
+
+    // Zoek de import-functie voor dit specifieke pad in de lijst van `allLesgeverImages`.
+    const imageImporter = allLesgeverImages[imagePath];
+
+    if (!imageImporter) {
+      console.error(`Afbeelding niet gevonden op pad: ${imagePath}`);
+      return {
+        ...lesgever,
+        imageAsset: null, // Zorgt ervoor dat de site niet crasht als een afbeelding mist.
+      };
+    }
+
+    // Voer de import-functie uit. Dit laadt de specifieke afbeelding en haar metadata.
+    const imageModule = await imageImporter();
+
+    return {
+      ...lesgever,
+      // Het 'default' export is wat de <Image> component nodig heeft.
+      imageAsset: imageModule.default,
+    };
+  })
+);
 ---
 
 <Layout title={page.data.title} description={page.data.description}>
@@ -39,23 +77,43 @@ const { Content } = await page.render();
 
     <section class="page-content">
       <div class="container">
-        <article class="content-article content-article--lesgevers">
-          <div class="page-type-badge">
-            <span>Lesgevers</span>
-          </div>
-
+        <article class="content-article">
           <h1>{page.data.title}</h1>
 
-          {page.data.subtitle && <p class="subtitle">{page.data.subtitle}</p>}
-
-          <Content />
+          {
+            page.data.description && (
+              <p class="page-intro">{page.data.description}</p>
+            )
+          }
 
           {
-            page.data.contact && (
-              <div class="contact-info">
-                <h3>Contact</h3>
-                <p>{page.data.contact}</p>
-              </div>
+            lesgeversWithImages.length > 0 ? (
+              lesgeversWithImages.map((lesgever: any) => (
+                <div class="lesgever-card">
+                  <h2>{lesgever.name}</h2>
+                  <div class="lesgever-content">
+                    {lesgever.imageAsset && (
+                      <div class="lesgever-image-container">
+                        <Image
+                          src={lesgever.imageAsset}
+                          alt={`Foto van ${lesgever.name}`}
+                          width={220}
+                          height={220}
+                          format="webp"
+                          quality={80}
+                        />
+                      </div>
+                    )}
+                    <ul>
+                      {lesgever.info.map((item: string) => (
+                        <li>{item}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              ))
+            ) : (
+              <Content />
             )
           }
         </article>

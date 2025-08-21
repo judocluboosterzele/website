@@ -1,49 +1,106 @@
-.page-type-lesgevers {
-  background: linear-gradient(135deg, #f8fafc 0, #e2e8f0 100%);
-}
-
-.content-article--lesgevers {
-  border-left: 4px solid var(--color-accent);
-}
-
-.page-type-badge {
-  position: absolute;
-  top: -10px;
-  right: 2rem;
-  background: var(--color-accent);
-  color: #fff;
-  padding: 0.5rem 1rem;
-  border-radius: var(--border-radius);
-  font-size: 0.875rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.subtitle {
-  font-size: 1.25rem;
-  color: var(--color-accent);
-  font-style: italic;
+.page-intro {
+  font-size: 1.1rem;
+  color: var(--color-text-light);
   margin-bottom: 2rem;
-  border-left: 3px solid var(--color-accent);
-  padding-left: 1rem;
+  text-align: center;
 }
 
-.contact-info {
-  margin-top: 3rem;
-  padding: 2rem;
+/* Lesgever kaartje */
+.lesgever-card {
   background: #f8fafc;
-  border-radius: var(--border-radius);
   border: 1px solid #e2e8f0;
+  border-radius: var(--border-radius-lg);
+  margin: 1.5rem 0;
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
 }
 
-.contact-info h3 {
-  margin-top: 0;
+.lesgever-card:first-of-type {
+  margin-top: 1rem;
+}
+
+.lesgever-card h2 {
   color: var(--color-primary);
+  margin: 0;
+  padding: 1.5rem;
+  border-bottom: 1px solid #e2e8f0;
+  background: #fff;
 }
 
+.lesgever-content {
+  padding: 0rem 1.5rem 0 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.lesgever-content img {
+  width: 280px;
+  height: 280px;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: 24px;
+  box-shadow: var(--shadow-md);
+  flex-shrink: 0;
+}
+
+.lesgever-content ul {
+  flex: 1;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.lesgever-content ul li {
+  margin-bottom: 0.75rem;
+  line-height: 1.6;
+  color: var(--color-text);
+  font-size: 1rem;
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.lesgever-content ul li::before {
+  content: "•";
+  color: var(--color-accent);
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+}
+
+/* Responsive styling */
 @media (max-width: 768px) {
-  .page-type-badge {
-    right: 1rem;
+  .lesgever-card h2 {
+    padding: 1.5rem;
+    text-align: center;
   }
+
+  .lesgever-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 1.5rem;
+    gap: 1.5rem;
+  }
+
+  .lesgever-content img {
+    width: 280px;
+    height: 280px;
+    border-radius: 20px;
+  }
+
+  .lesgever-content ul {
+    padding-top: 0;
+    width: 100%;
+  }
+
+  .lesgever-content ul li {
+    text-align: left;
+    padding-left: 1.5rem;
+  }
+}
+
+/* Laatste kaartje extra ruimte */
+.lesgever-card:last-of-type {
+  margin-bottom: 3rem;
 }

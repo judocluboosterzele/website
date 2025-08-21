@@ -10,6 +10,16 @@ const pages = defineCollection({
     heroImageAlt: z.string().optional(),
     order: z.number().optional(), // fallback order
     navOrder: z.array(z.string()).optional(), // explicit ordering (root & folders)
+    // Lesgevers data
+    lesgevers: z
+      .array(
+        z.object({
+          name: z.string(),
+          image: z.string(),
+          info: z.array(z.string()),
+        })
+      )
+      .optional(),
   }),
 });
 
