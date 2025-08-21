@@ -1,5 +1,5 @@
 ---
 title: "Home"
 navOrder:
-  ["about", "groepen", "competitie", "gezond-ethisch-sporten", "kalender"]
+  ["about", "groepen", "competitie", "gezond-ethisch-sporten", "contact"]
 ---

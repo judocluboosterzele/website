@@ -1,8 +1,6 @@
 ---
 title: "De club"
 description: "Geschiedenis van de club"
-# heroImage: "https://images.pexels.com/photos/7045640/pexels-photo-7045640.jpeg?auto=compress&cs=tinysrgb&w=800"
-# heroImageAlt: "Kinderen leren judo technieken"
 ---
 
 De club werd in augustus 1991 opgericht door Ronny De Grove, Guy De Visscher en Rudy De Corte. Intussen heeft JCO meer dan 100 leden: veel jonge judoka’s, maar ook heel wat zwarte gordels die ooit hun eerste stapjes op de tatami hebben gezet in Oosterzele.

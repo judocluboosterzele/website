@@ -10,6 +10,7 @@ navOrder:
     "proeflessen",
     "kalender",
     "verzekering",
+    "examen",
   ]
 ---
 
