@@ -75,6 +75,16 @@
   color: var(--color-primary);
 }
 
+.content-article img {
+  width: 100%;
+  height: auto; /* behoudt aspect ratio */
+  border-radius: var(--border-radius-lg);
+  display: block;
+  margin: 1.5rem 0;
+  box-shadow: var(--shadow-sm);
+  object-fit: contain; /* extra zekerheid */
+}
+
 @media (max-width: 768px) {
   .hero-image-container {
     height: 180px;
@@ -83,5 +93,11 @@
   .content-article {
     padding: 2rem 1rem;
     margin: 0 1rem;
+  }
+
+  @media (max-width: 768px) {
+    .content-article img {
+      margin: 1rem 0;
+    }
   }
 }

@@ -13,10 +13,15 @@ Al deze gedragscodes hangen ook uit in de club als poster.
 
 ## Judoka
 
-![test](../../../assets/images/jigoro.jpg)
-
-<!-- TODO: gedragscodes -->
+![Judoka 1](../../../assets/images/gedragscodes/judoka1.png)
+![Judoka 2](../../../assets/images/gedragscodes/judoka2.png)
 
 ## Ouders
 
+![Ouders 1](../../../assets/images/gedragscodes/ouders1.png)
+![Ouders 2](../../../assets/images/gedragscodes/ouders2.png)
+
 ## Trainer & Coach
+
+![Coach 1](../../../assets/images/gedragscodes/coach1.png)
+![Coach 2](../../../assets/images/gedragscodes/coach2.png)
