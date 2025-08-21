@@ -7,32 +7,45 @@ description: "Informatie over de lesuren en de locatie"
 
 ## Lesuren
 
-**Woensdag**\
-Benjamins: 17u45 – 18u30\
-Jongeren: 18u30 – 19u30\
-Volwassenen: 19u30 – 21u00
+| Woensdag &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; |               |
+| :------------------------------------------ | :------------ |
+| Benjamins                                   | 17:45 – 18:30 |
+| Jongeren                                    | 18:30 – 19:30 |
+| Volwassenen                                 | 19:30 – 21:00 |
 
-**Vrijdag**\
-Jongeren: 19:30u – 21u00\
-Volwassenen: 19:30u – 21u00
+&nbsp;
 
-**Zondag**\
-Kleuterjudo: 09u00 – 09u45\
-Benjamins: 09u00 – 09u45\
-Jongeren: 09u45 – 10u45\
-Volwassenen: 10u45 – 12u00
+| Vrijdag &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; |               |
+| :-------------------------------------------------------------- | :------------ |
+| Jongeren                                                        | 19:30 – 21:00 |
+| Volwassenen                                                     | 19:30 – 21:00 |
 
-**Data Kleuterjudo**\
-12 januari 2025\
-19 januari 2025\
-26 januari 2025\
-9 februari 2025 (breng je knuffel mee)\
-23 februari 2025\
-16 maart 2025\
-30 maart 2025\
-27 april 2025\
-11 mei 2025\
-18 mei 2025
+&nbsp;
+
+| Zondag &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; |               |
+| :------------------------------------------------------------- | :------------ |
+| Kleuters I                                                     | 9:00 – 9:45   |
+| Kleuters II                                                    | 9:30 - 10:15  |
+| Benjamins                                                      | 9:00 – 09:45  |
+| Jongeren                                                       | 9:45 – 10:45  |
+| Volwassenen                                                    | 10:45 – 12:00 |
+
+&nbsp;
+
+<p style="margin-bottom:-1.5rem;"><strong>Data Kleuterjudo</strong></p>
+
+|     | <span style="visibility:hidden;">Data Kleuterjudo</span> |      |
+| :-: | :------------------------------------------------------: | ---- |
+| 31  |                         augustus                         | 2025 |
+|  7  |                        september                         | 2025 |
+| 14  |                        september                         | 2025 |
+| 21  |                        september                         | 2025 |
+|  5  |                         oktober                          | 2025 |
+| 19  |                         oktober                          | 2025 |
+| 26  |                         oktober                          | 2025 |
+|  9  |                         november                         | 2025 |
+| 30  |                         november                         | 2025 |
+|  7  |                         december                         | 2025 |
 
 ## Locatie
 

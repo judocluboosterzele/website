@@ -9,6 +9,8 @@ heroImageAlt: "Kleuters op de tatami"
 
 Kleuterjudo is bedoeld voor kindjes vanaf 3 jaar. In deze lessen zetten ze hun eerste stapjes op de judomat. De nadruk ligt op spelenderwijs leren bewegen, met speciale aandacht voor valtechnieken. Het doel is niet om meteen perfecte worpen of grepen aan te leren, maar eerder om een basis en gevoel voor judo te ontwikkelen.
 
+De lessen zijn opgesplitst in twee groepen: **Kleuters I** voor de jongste, startende kleuters en **Kleuters II** voor de oudere of meer ervaren kleuters. Beide groepen werken volgens het **ouder-kindprincipe**, waarbij één ouder samen met zijn/haar kind deelneemt aan de les.
+
 ## Wat leren ze?
 
 - Basisbewegingen van het judo
@@ -22,15 +24,26 @@ Kleuterjudo is bedoeld voor kindjes vanaf 3 jaar. In deze lessen zetten ze hun e
 - Dit zorgt voor een leuke en veilige sfeer waarin ouder en kind samen kunnen bewegen en plezier maken.
 - De oefeningen zijn afwisselend mét en zonder ouders, zodat de ouders ook even kunnen pauzeren 😉
 
-## Wat meebrengen?
+## Aanbevolen leeftijdsindeling:
 
-- Sportkledij (een kimono is nog niet nodig)
-- Enthousiasme!
+- 3-4 jaar → **Kleuters I**
+- 4-5 jaar zonder judo-ervaring → **Kleuters I**
+- 4-5 jaar met 2 reeksen ervaring en voldoende motorische ontwikkeling → **Kleuters II**
+- 5-6 jaar → **Kleuters II**
 
 ## Lesuren
 
-**Zondag**: 9:00 - 9:45\
-(De lessen gaan door in de grote zaal boven.)
+- **Kleuters I (3-5 jaar)**: zondag 9:00 - 9:30
+- **Kleuters II (4-6 jaar)**: zondag 9:30 - 10:15
+
+(De lessen gaan door in de grote sportzaal van sporthal _De Kluize_.)\
+Elke reeks bestaat uit 10 lessen per semester.
+
+## Wat meebrengen?
+
+- **Kleuters I:** losse sportkledij waar al eens mag aan getrokken worden (een kimono is nog niet nodig).
+- **Kleuters II:** kimonootje (gratis uitgeleend door de club, met een waarborg van €10). Bij inschrijving vragen we de lengte van je kind om de juiste maat te voorzien.
+- Enthousiasme!
 
 ## Interesse?
 
