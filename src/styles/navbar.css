@@ -87,7 +87,6 @@
   list-style: none;
   margin: 0;
   padding: 0;
-  gap: 1.2rem;
 }
 
 .nav-item {
@@ -124,12 +123,12 @@
   border: none;
   color: currentColor;
   cursor: pointer;
-  padding: 0.5rem;
+  padding: 0 1rem 0 0;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: transform 0.3s ease;
-  margin-left: 0.25rem;
+  margin-left: 0rem;
 }
 
 .dropdown-arrow svg {
