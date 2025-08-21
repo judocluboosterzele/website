@@ -1,6 +1,6 @@
 ---
-title: "Filosofie & Eed van de judoka"
-description: "Filosofie en Eed van de judoka"
+title: "Filosofie & eed van de judoka"
+description: "Filosofie en eed van de judoka"
 heroImage: "jigoro.jpg"
 heroImageAlt: "Jigoro Kano"
 ---
