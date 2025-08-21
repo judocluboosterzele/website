@@ -32,3 +32,5 @@ In 2014 werd Judoclub Oosterzele omgevormd tot een vzw.
 - Judoclub Oosterzele vzw is aangesloten bij de VJF (Vlaamse Judofederatie) met clubnummer **4061**.
 - Overschrijvingen van lidgeld en kimono’s kan op KBC rekeningnummer: \
   **BE52 7310 3902 6509**
+
+<!-- TODO: rekeningnummer -->

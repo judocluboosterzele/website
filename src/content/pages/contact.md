@@ -5,34 +5,9 @@ heroImage: "https://images.pexels.com/photos/4761663/pexels-photo-4761663.jpeg?a
 heroImageAlt: "Onze moderne dojo faciliteiten"
 ---
 
-<!-- TODO -->
-<!-- # Contact
+Wil je meer informatie over Judoclub Oosterzele dan kan dit altijd via:
 
-## Dojo Locatie
-
-**Sporthal De Bruul**
-Bruulstraat 15
-9968 Oosterzele
-België
-
-## Contactgegevens
-
-**Email**: info@judocluboosterzele.be
-**Telefoon**: +32 9 123 45 67
-
-## Trainingstijden
-
-Zie onze [trainingsschema](/training) pagina voor gedetailleerde tijden per leeftijdsgroep.
-
-## Inschrijvingen
-
-Inschrijvingen zijn het hele jaar door mogelijk. Neem contact op om een gratis proefles in te plannen.
-
-**Lidgeld 2024:**
-- Jeugd (6-17 jaar): €180/jaar
-- Volwassenen: €220/jaar
-- Gezinstarief: 10% korting vanaf tweede lid
-
-## Bereikbaarheid
-
-De dojo is gemakkelijk bereikbaar met de auto en er is voldoende gratis parkeergelegenheid beschikbaar. -->
+- E-mail naar info@judocluboosterzele.be
+- Voor kleuterjudo e-mail naar kleuterjudo@judocluboosterzele.be
+- Telefonisch op 0486/43.50.82
+- Of spreek ons aan tijdens een van de trainingen

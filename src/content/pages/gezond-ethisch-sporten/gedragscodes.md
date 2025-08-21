@@ -15,7 +15,7 @@ Al deze gedragscodes hangen ook uit in de club als poster.
 
 ![test](../../../assets/images/jigoro.jpg)
 
-<!-- TODO -->
+<!-- TODO: gedragscodes -->
 
 ## Ouders
 

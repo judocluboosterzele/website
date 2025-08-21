@@ -6,4 +6,4 @@ heroImageAlt: "Verschillende leeftijdsgroepen tijdens training"
 navOrder: ["kleuters", "benjamins", "jongeren", "volwassenen"]
 ---
 
-<!-- TODO -->
+<!-- TODO: groepen -->
