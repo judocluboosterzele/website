@@ -45,6 +45,45 @@
   margin: 0;
 }
 
+.social-icons {
+  display: flex;
+  justify-content: center; /* icons in het midden */
+  gap: 1rem;
+  margin-top: 0.5rem; /* minder ruimte tussen tekst en icons */
+  margin-bottom: 1.5rem; /* meer ruimte tussen icons en lijntje */
+}
+
+.social-icons a {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 18px;
+  text-decoration: none;
+  transition: transform 0.2s;
+}
+
+.social-icons a:hover {
+  transform: scale(1.1);
+}
+
+/* Brand colors */
+.social-icons a.facebook {
+  background: #1877f2;
+}
+.social-icons a.instagram {
+  background: #e4405f;
+}
+.social-icons a.x {
+  background: #000;
+}
+.social-icons a.tiktok {
+  background: #000;
+}
+
 @media (max-width: 768px) {
   .footer-content {
     grid-template-columns: 1fr;
