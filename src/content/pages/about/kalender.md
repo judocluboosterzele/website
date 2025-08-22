@@ -18,7 +18,20 @@ description: "Informatie over de activiteiten"
 
 - 21 september 2025: ouders infosesie (competitie en randoridagen)
 - 9 november 2025: ontbijttraining
+- 30 november 2025: Sinterklaas
+  
+- Voorjaar 2026: OZAK-ontmoeting
+- Voorjaar 2026: Vriendjestraining
 
 ## Geen les op
 
+- 2 november 2025: Allerzielen
+- 19 december 2025: Kerstvakantie
+- 24 december 2025: Kerstavond
+- 31 december 2025: Oudejaarsavond
+- 4 januari 2026: Kerstvakantie
+- 5 april 2026: Pasen
+- 8 april 2026: Zaal bezet (TOO)
+- 1 mei 2026: Dag van de arbeid
+- 24 mei 2026: Pinksteren
 <!-- TODO: geen les op -->
