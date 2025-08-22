@@ -16,7 +16,8 @@ description: "Informatie over de activiteiten"
 
 ## Activiteiten seizoen 2025-2026
 
-<!-- TODO: activiteiten -->
+- 21 september 2025: ouders infosesie (competitie en randoridagen)
+- 9 november 2025: ontbijttraining
 
 ## Geen les op
 
