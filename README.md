@@ -4,6 +4,17 @@ In `astro.config.mjs` change the site config to the base domain
 
 (`site: "https://demo489.judocluboosterzele.be"` -> `site: "https://judocluboosterzele.be"`).
 
+# Stappenplan om de site te updaten
+
+1. Navigeer naar de map [`src/content/pages`](https://github.com/judocluboosterzele/website/tree/main/src/content/pages)
+2. Klik op de pagina die je wilt wijzigen
+3. Klik rechtsboven op de pen
+4. Pas de tekst aan
+5. Klik op de grote groene knop "Commit changes..."
+6. Typ kort wat je hebt aangepast
+7. Klik nog eens op commit
+8. Klaar
+
 # Astro Starter Kit: Basics
 
 ```sh
