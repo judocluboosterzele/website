@@ -33,4 +33,3 @@ description: "Informatie over de activiteiten"
 - 8 april 2026: Zaal bezet (TOO)
 - 1 mei 2026: Dag van de arbeid
 - 24 mei 2026: Pinksteren
-<!-- TODO: geen les op -->
