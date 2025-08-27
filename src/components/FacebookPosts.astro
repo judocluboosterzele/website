@@ -1,0 +1,140 @@
+---
+// FacebookPosts.astro
+import "../styles/facebook-posts.css";
+
+interface FacebookPost {
+  description: string;
+  imageUrl: string | null;
+  link: string;
+  pubDate: string;
+}
+
+// RSS feed URL - replace with your actual RSS URL
+const RSS_URL = "https://fetchrss.com/feed/aK72CYtQqMXCaK70zX-rcwrS.rss";
+
+async function fetchFacebookPosts(): Promise<FacebookPost[]> {
+  try {
+    const response = await fetch(RSS_URL);
+    const rssText = await response.text();
+
+    // Parse RSS XML using regex (simple approach for RSS)
+    const posts: FacebookPost[] = [];
+
+    // Extract items using regex
+    const itemMatches = rssText.match(/<item>([\s\S]*?)<\/item>/g);
+
+    if (!itemMatches) {
+      return [];
+    }
+
+    // Get latest 4 posts
+    for (let i = 0; i < Math.min(4, itemMatches.length); i++) {
+      const itemContent = itemMatches[i];
+
+      // Extract description
+      const descMatch =
+        itemContent.match(
+          /<description><!\[CDATA\[([\s\S]*?)\]\]><\/description>/
+        ) || itemContent.match(/<description>([\s\S]*?)<\/description>/);
+      const description = descMatch ? descMatch[1] : "";
+
+      // Extract link
+      const linkMatch = itemContent.match(/<link>(.*?)<\/link>/);
+      const link = linkMatch ? linkMatch[1].trim() : "";
+
+      // Extract pubDate
+      const pubDateMatch = itemContent.match(/<pubDate>(.*?)<\/pubDate>/);
+      const pubDate = pubDateMatch ? pubDateMatch[1].trim() : "";
+
+      // Extract image URL from media:content
+      let imageUrl: string | null = null;
+      const mediaMatch = itemContent.match(/<media:content[^>]+url="([^"]+)"/);
+      if (mediaMatch) {
+        imageUrl = mediaMatch[1];
+      }
+
+      // If no media:content, try to extract from description
+      if (!imageUrl && description) {
+        const imgMatch = description.match(/<img[^>]+src="([^"]+)"/);
+        if (imgMatch) {
+          imageUrl = imgMatch[1];
+        }
+      }
+
+      // Clean description by removing HTML tags and extra content
+      let cleanDescription = description
+        .replace(/<[^>]*>/g, "") // Remove HTML tags
+        .replace(/\(Feed generated with.*?\)/, "") // Remove feed footer
+        .replace(/&nbsp;/g, " ")
+        .replace(/&amp;/g, "&")
+        .replace(/&lt;/g, "<")
+        .replace(/&gt;/g, ">")
+        .replace(/&quot;/g, '"')
+        .trim();
+
+      // Truncate if too long
+      if (cleanDescription.length > 200) {
+        cleanDescription = cleanDescription.substring(0, 200) + "...";
+      }
+
+      posts.push({
+        description: cleanDescription,
+        imageUrl,
+        link,
+        pubDate,
+      });
+    }
+
+    return posts;
+  } catch (error) {
+    console.error("Error fetching Facebook posts:", error);
+    return [];
+  }
+}
+
+const posts = await fetchFacebookPosts();
+
+function formatDate(dateString: string): string {
+  try {
+    const date = new Date(dateString);
+    return date.toLocaleDateString("nl-BE", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
+  } catch {
+    return "";
+  }
+}
+---
+
+<section class="facebook-posts">
+  <h2>Laatste nieuws</h2>
+  <div class="posts-grid">
+    {
+      posts.map((post) => (
+        <article class="post-card card">
+          {post.imageUrl && (
+            <div class="post-image-container">
+              <img src={post.imageUrl} class="post-image" loading="lazy" />
+            </div>
+          )}
+          <div class="post-content">
+            <p class="post-description">{post.description}</p>
+            <div class="post-footer">
+              <time class="post-date">{formatDate(post.pubDate)}</time>
+              <a
+                href={post.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="post-link"
+              >
+                Lees meer →
+              </a>
+            </div>
+          </div>
+        </article>
+      ))
+    }
+  </div>
+</section>
