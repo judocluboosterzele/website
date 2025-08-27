@@ -1,0 +1,28 @@
+.calendar {
+  padding: 4rem 0;
+  background: linear-gradient(135deg, var(--color-light) 0, #fff 100%);
+  text-align: center;
+}
+
+.calendar-title {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: var(--color-primary);
+}
+
+.calendar-embed iframe {
+  border-radius: var(--border-radius-lg);
+  /* box-shadow: var(--shadow-lg); */
+  width: 100%;
+  max-width: 800px !important;
+  max-width: 1000px;
+  margin: 0 auto;
+  display: block;
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .calendar-title {
+    font-size: 2rem;
+  }
+}

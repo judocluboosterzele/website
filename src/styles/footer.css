@@ -1,7 +1,7 @@
 .footer {
   background: var(--color-primary);
   color: #fff;
-  margin-top: 4rem;
+  /* margin-top: 4rem; */
 }
 
 .footer-content {

@@ -6,6 +6,7 @@ import HeroSection from "../components/HeroSection.astro";
 import FeatureCard from "../components/FeatureCard.astro";
 import TrainingGroupCard from "../components/TrainingGroupCard.astro";
 import CTASection from "../components/CTASection.astro";
+import Calendar from "../components/Calendar.astro";
 
 // Images
 import heroImage from "../assets/images/hero.png";
@@ -16,7 +17,7 @@ import leeftijden from "../assets/images/feature/leeftijden.png";
 ---
 
 <Layout
-  title="Judoclub Oosterzele - Traditioneel Judo voor Alle Leeftijden"
+  title="Judoclub Oosterzele - Judo voor alle leeftijden"
   description="Ontdek de kunst van judo bij Judoclub Oosterzele. Professionele training voor kinderen, jongeren en volwassenen in een moderne dojo."
 >
   <Navbar />
@@ -25,7 +26,7 @@ import leeftijden from "../assets/images/feature/leeftijden.png";
     <HeroSection
       title="Welkom bij"
       subtitle="Judoclub Oosterzele"
-      description="Ontdek de traditionele kunst van judo in onze dojo. Wij bieden professionele training voor alle leeftijden en niveaus, met focus op techniek, respect en persoonlijke ontwikkeling."
+      description="Ontdek de kunst van judo in onze dojo. Wij bieden professionele training voor alle leeftijden en niveaus, met focus op techniek, respect en persoonlijke ontwikkeling."
       primaryButtonText="Probeer Gratis"
       primaryButtonLink="/about/proeflessen"
       secondaryButtonText="Leer Meer"
@@ -36,7 +37,7 @@ import leeftijden from "../assets/images/feature/leeftijden.png";
 
     <section class="features">
       <div class="container">
-        <h2>Waarom Kiezen Voor Onze Club?</h2>
+        <h2>Waarom kiezen voor onze club?</h2>
 
         <div class="features-grid">
           <FeatureCard
@@ -78,7 +79,7 @@ import leeftijden from "../assets/images/feature/leeftijden.png";
 
     <section class="training-groups">
       <div class="container">
-        <h2>Onze Trainingsgroepen</h2>
+        <h2>Onze trainingsgroepen</h2>
         <div class="groups-grid">
           <a href="/groepen/kleuters" class="group-card-link">
             <TrainingGroupCard
@@ -127,12 +128,17 @@ import leeftijden from "../assets/images/feature/leeftijden.png";
     </section>
 
     <CTASection
-      title="Klaar om te Beginnen?"
+      title="Klaar om te beginnen?"
       description="Kom langs voor een gratis proefles en ontdek wat judo voor jou kan betekenen. Geen ervaring vereist!"
       primaryButtonText="Probeer Gratis"
       primaryButtonLink="/about/proeflessen"
       secondaryButtonText="Lesuren"
       secondaryButtonLink="/about/lesuren-locatie"
+    />
+
+    <Calendar
+      title="Kalender"
+      calendarUrl="https://calendar.google.com/calendar/embed?showTitle=0&showDate=0&showPrint=0&showCalendars=0&showTz=0&mode=AGENDA&height=600&wkst=1&bgcolor=%23FFFFFF&src=judo.oosterzele%40gmail.com&color=%232952A3&ctz=Europe%2FBrussels "
     />
   </main>
 

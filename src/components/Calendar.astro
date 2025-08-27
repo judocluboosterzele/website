@@ -1,0 +1,19 @@
+---
+interface Props {
+  title: string;
+  calendarUrl: string;
+}
+
+const { title, calendarUrl } = Astro.props;
+import "../styles/calendar.css";
+---
+
+<section class="calendar">
+  <div class="container">
+    <h1 class="calendar-title">{title}</h1>
+    <div class="calendar-embed">
+      <iframe src={calendarUrl} style="border:0" width="100%" height="600"
+      ></iframe>
+    </div>
+  </div>
+</section>
