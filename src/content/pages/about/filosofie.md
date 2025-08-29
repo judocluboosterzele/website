@@ -43,9 +43,9 @@ Iedere judoka probeert bij de aanvang van de training aanwezig te zijn. Indien m
   - bij het betreden en het verlaten van de dojo,
   - bij het begin en het einde van elke training,
   - bij het begin en einde van elke oefening met een partner
-- Van alle leden ( judoka’s, trainers en bestuursleden) wordt zowel op als naast de tatami:
-  - sportief en gedisciplineerd gedrag verwacht.
-  - een respectvolle houding tegenover elkaar en iedereen los van de graden; volledig in de geest van het judo.
+- Van alle leden (judoka’s, trainers en bestuursleden) wordt zowel op als naast de tatami het volgende verwacht:
+  - sportief en gedisciplineerd gedrag
+  - een respectvolle houding tegenover elkaar en iedereen, los van de graden en volledig in de geest van het judo.
 - Er wordt geen agressief gedrag geduld tegenover medejudoka’s noch tegenover derden, zowel op als naast de tatami; pesten wordt niet toegelaten binnen onze club.
 
 ### Kledij & hygiëne
@@ -60,7 +60,7 @@ Iedere judoka probeert bij de aanvang van de training aanwezig te zijn. Indien m
 - Initiatieleden worden toegelaten met een trainingspak.
 - De meisjes dragen een T-shirt onder de judogi.
 - Om ons van en naar de tatami te begeven worden er slippers of (sport)schoenen gedragen.
-- Om jezelf en anderen te beschermen tegen blessures is het niet toegelaten om tijdens de trainingen siervoorwerpen te - dragen zoals ringen, armbanden, uurwerken, halskettingen, piercings enz.
+- Om jezelf en anderen te beschermen tegen blessures is het niet toegelaten om tijdens de trainingen siervoorwerpen te dragen zoals ringen, armbanden, uurwerken, halskettingen, piercings enz.
 
 ### Lidgeld & vergunning
 

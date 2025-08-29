@@ -15,7 +15,7 @@ description: "Informatie over de lesuren en de locatie"
 
 | Vrijdag &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; |               |
 | :-------------------------------------------------------------- | :------------ |
-| Jongeren                                                        | 19:30 – 21:00 |
+| Jongeren                                                        | 19:30 – 20:30 |
 | Volwassenen                                                     | 19:30 – 21:00 |
 
 &nbsp;

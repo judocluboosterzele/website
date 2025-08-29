@@ -16,7 +16,7 @@ description: "Informatie over de activiteiten"
 
 ## Activiteiten seizoen 2025-2026
 
-- 21 september 2025: ouders infosesie (competitie en randoridagen)
+- 21 september 2025: ouders infosessie (competitie en randoridagen)
 - 9 november 2025: ontbijttraining
 - 30 november 2025: Sinterklaas
 - Voorjaar 2026: OZAK-ontmoeting

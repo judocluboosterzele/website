@@ -20,6 +20,7 @@ Welkom op onze informatiepagina! Hier vind je alles wat je wilt weten over onze 
 - [Filosofie & eed van de judoka](/about/filosofie)
 - [Lesgevers](/about/lesgevers)
 - [Lesuren & Locatie](/about/lesuren-locatie)
-- [Proeflessen](/about/proeflessen)
+- [Gratis proeflessen](/about/proeflessen)
 - [Kalender](/about/kalender)
 - [Verzekering](/about/verzekering)
+- [Examenprogramma's](/about/examen)
