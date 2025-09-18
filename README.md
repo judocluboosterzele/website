@@ -1,9 +1,3 @@
-# TODO
-
-In `astro.config.mjs` change the site config to the base domain
-
-(`site: "https://demo489.judocluboosterzele.be"` -> `site: "https://judocluboosterzele.be"`).
-
 # Stappenplan om de site te updaten
 
 1. Navigeer naar de map [`src/content/pages`](https://github.com/judocluboosterzele/website/tree/main/src/content/pages)
