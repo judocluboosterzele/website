@@ -15,4 +15,4 @@ Ameline is het Aanspreekpunt Persoonlijk Integriteit (API) binnen onze club.
 
 Discretie is verzekerd. Ameline zal niet alleen een luisterend oor zijn maar ook meehelpen om tot een oplossing te komen of helpen om dit door te geven aan de nodige officiële instanties.
 
-Je kan Ameline aanspreken in de club of ook bereiken via email op: ameline.wuytack@ugent.be
+Je kan Ameline aanspreken in de club of ook bereiken via email op: amelinewuytack@hotmail.com
