@@ -1,0 +1,40 @@
+---
+
+---
+
+<div id="cookie-consent-banner" class="cookie-banner">
+  <div class="cookie-content">
+    <h3>Cookie-instellingen</h3>
+    <p>
+      Deze website laadt externe inhoud van Google. Hiervoor zijn cookies van
+      derden nodig. Geef je toestemming om deze inhoud te laden?
+    </p>
+    <div class="cookie-buttons">
+      <button id="cookie-consent-accept" class="btn-accept"
+        >Alles accepteren</button
+      >
+      <button id="cookie-consent-decline" class="btn-decline">Weigeren</button>
+    </div>
+  </div>
+</div>
+
+<template id="blocked-iframe-template">
+  <div class="iframe-blocked">
+    <div class="blocked-content">
+      <h4>🔒 Inhoud geblokkeerd</h4>
+      <p>
+        Om deze inhoud te kunnen zien, moeten cookies van derden worden
+        geaccepteerd.
+      </p>
+      <button class="btn-enable">Accepteer cookies en laad inhoud</button>
+    </div>
+  </div>
+</template>
+
+<style>
+  @import "../styles/cookie-consent.css";
+</style>
+
+<script>
+  import "../scripts/cookie-consent.js";
+</script>

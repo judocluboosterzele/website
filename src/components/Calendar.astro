@@ -12,8 +12,12 @@ import "../styles/calendar.css";
   <div class="container">
     <h1 class="calendar-title">{title}</h1>
     <div class="calendar-embed">
-      <iframe src={calendarUrl} style="border:0" width="100%" height="600"
-      ></iframe>
+      <iframe
+        class="lazy-iframe"
+        data-src={calendarUrl}
+        style="border:0"
+        width="100%"
+        height="600"></iframe>
     </div>
   </div>
 </section>
