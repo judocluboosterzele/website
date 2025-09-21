@@ -1,7 +1,7 @@
 ---
 title: "Benjamins (6-8 jaar)"
 description: "Judo voor kinderen van 6 tot 12 jaar"
-heroImage: "groepen/benjamins.jpg"
+heroImage: "groepen/Benjamins1.jpg"
 heroImageAlt: "Kinderen leren judo technieken"
 ---
 
