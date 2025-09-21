@@ -1,0 +1,109 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import "../styles/verslagen.css";
+
+import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
+
+const { page } = Astro.props;
+
+const allVerslagen = await getCollection("pages");
+const verslagenPages = allVerslagen.filter(
+  (p) =>
+    p.slug.startsWith("competitie/verslagen/") &&
+    p.slug !== "competitie/verslagen/index"
+);
+
+function getFirstImage(content: string) {
+  const match = content.match(/!\[.*?\]\((.*?)\)/);
+  return match ? match[1] : null;
+}
+
+// Geeft maximaal maxLength tekens van de content terug
+function getSnippet(content: string, maxLength = 120) {
+  const text = content
+    .replace(/!\[.*?\]\(.*?\)/g, "")
+    .replace(/\n+/g, " ")
+    .trim();
+  if (text.length > maxLength) return text.substring(0, maxLength);
+  return text;
+}
+
+// Controleert of de tekst langer is dan maxLength
+function needsReadMore(content: string, maxLength = 120) {
+  const text = content
+    .replace(/!\[.*?\]\(.*?\)/g, "")
+    .replace(/\n+/g, " ")
+    .trim();
+  return text.length > maxLength;
+}
+
+function formatDateFromSlug(slug: string): string {
+  const parts = slug.split("/");
+  const datePart = parts[parts.length - 1];
+  const [year, month, day] = datePart.split("-");
+  return `${day}/${month}/${year}`;
+}
+---
+
+<Layout title={page.data.title} description={page.data.description}>
+  <Navbar />
+
+  <section class="verslagen">
+    <h1>{page.data.title}</h1>
+
+    <div class="verslagen-grid">
+      {
+        verslagenPages.map((v) => {
+          const firstImage = getFirstImage(v.body);
+          const snippet = getSnippet(v.body);
+          const formattedDate = formatDateFromSlug(v.slug);
+
+          return (
+            <a
+              href={`/competitie/verslagen/${v.slug.replace(
+                "competitie/verslagen/",
+                ""
+              )}`}
+              class="verslag-card"
+            >
+              {firstImage && (
+                <div class="verslag-image-container">
+                  <Image
+                    src={firstImage}
+                    alt={v.data.title}
+                    class="verslag-image"
+                    width={400}
+                    height={250}
+                    format="webp"
+                    quality={80}
+                  />
+                </div>
+              )}
+              <div class="verslag-content">
+                <h3 class="verslag-title">{v.data.title}</h3>
+                <p class="verslag-snippet">
+                  {getSnippet(v.body)}
+                  {needsReadMore(v.body) && (
+                    <span class="verslag-readmore-container">
+                      <span class="verslag-dots">…</span>
+                      <br />
+                      <span class="verslag-readmore">Lees meer</span>
+                    </span>
+                  )}
+                </p>
+                <div class="verslag-footer">
+                  <time class="verslag-date">{formattedDate}</time>
+                </div>
+              </div>
+            </a>
+          );
+        })
+      }
+    </div>
+  </section>
+
+  <Footer />
+</Layout>

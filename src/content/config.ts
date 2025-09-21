@@ -5,7 +5,7 @@ const pages = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string().optional(),
-    type: z.enum(["info", "lesgevers"]).default("info"),
+    type: z.enum(["info", "lesgevers", "verslagen"]).default("info"),
     heroImage: z.string().optional(),
     heroImageAlt: z.string().optional(),
     order: z.number().optional(), // fallback order

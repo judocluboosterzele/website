@@ -1,0 +1,136 @@
+.verslagen {
+  padding: 4rem 0;
+}
+
+.verslagen h1 {
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 2.5rem;
+  color: var(--color-primary);
+  position: relative;
+}
+
+/* blauwe streep onder de titel */
+.verslagen h1::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 4px;
+  background-color: var(--color-accent);
+  margin: 0.5rem auto 0; /* centreren */
+  border-radius: 2px;
+}
+
+.verslagen-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 2rem auto 0;
+}
+
+@media (max-width: 768px) {
+  .verslagen-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 0 1rem;
+  }
+
+  .verslagen h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+}
+
+.verslag-card {
+  text-align: center;
+  padding: 1.5rem;
+  background: var(--color-surface, #fff);
+  border-radius: var(--border-radius, 8px);
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  text-decoration: none;
+  color: inherit;
+}
+
+.verslag-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.verslag-image-container {
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+  border-radius: var(--border-radius);
+  margin-bottom: 1rem;
+}
+
+.verslag-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.verslag-card:hover .verslag-image {
+  transform: scale(1.05);
+}
+
+.verslag-content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.verslag-title {
+  color: var(--color-primary, #1976d2);
+  margin: 0 0 0.5rem 0;
+  font-size: 1.3rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.verslag-snippet {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--color-text, #333);
+  margin-bottom: 1rem;
+  white-space: pre-line;
+}
+
+.verslag-footer {
+  margin-top: auto;
+  border-top: 1px solid var(--color-border, #e0e0e0);
+  padding-top: 0.5rem;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.verslag-date {
+  color: var(--color-text-secondary, #666);
+  font-size: 0.85rem;
+}
+
+@media (max-width: 480px) {
+  .verslagen {
+    padding: 3rem 0;
+  }
+}
+
+.verslag-readmore {
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
+.verslag-readmore-container {
+  display: inline; /* houdt puntjes op dezelfde regel als snippet */
+}
+
+.verslag-dots {
+  color: inherit; /* normale tekstkleur */
+}
