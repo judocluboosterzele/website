@@ -8,7 +8,7 @@ Dit zijn onze verschillende judogroepen. Ontdek welke groep het beste bij jou pa
 
 ## <a href="/groepen/kleuters">Kleuters (3-6 jaar)</a>
 
-<a href="/groepen/kleuters">![kleuters](../../../assets/images/groepen/kleuters.webp)</a>
+<a href="/groepen/kleuters">![kleuters](../../../assets/images/groepen/kleuters.jpg)</a>
 
 ## <a href="/groepen/benjamins">Benjamins (6-8 jaar)</a>
 

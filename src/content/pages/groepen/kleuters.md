@@ -1,7 +1,7 @@
 ---
 title: "Kleuters (3-6 jaar)"
 description: "Informatie over kleuterjudo"
-heroImage: "groepen/Kleuters1.jpg"
+heroImage: "groepen/kleuters.jpg"
 heroImageAlt: "Kleuters op de tatami"
 ---
 

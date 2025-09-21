@@ -1,7 +1,7 @@
 ---
 title: "Jongeren (8-14 jaar)"
 description: "Judo voor jongeren van 8 tot 14 jaar"
-heroImage: "groepen/Jongeren1.jpg"
+heroImage: "groepen/jongeren.jpg"
 heroImageAlt: "Jongeren tijdens judotraining"
 ---
 
