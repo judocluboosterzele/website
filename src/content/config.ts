@@ -8,9 +8,12 @@ const pages = defineCollection({
     type: z.enum(["info", "lesgevers", "verslagen"]).default("info"),
     heroImage: z.string().optional(),
     heroImageAlt: z.string().optional(),
-    order: z.number().optional(), // fallback order
-    navOrder: z.array(z.string()).optional(), // explicit ordering (root & folders)
-    // Lesgevers data
+    order: z.number().optional(),
+    navOrder: z.array(z.string()).optional(),
+    date: z
+      .string()
+      .transform((val) => new Date(val))
+      .optional(),
     lesgevers: z
       .array(
         z.object({

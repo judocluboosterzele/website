@@ -12,6 +12,13 @@ interface Props {
 
 const { page, heroImage } = Astro.props;
 const { Content } = await page.render();
+
+const formatDate = (d: string) =>
+  new Intl.DateTimeFormat("nl-BE", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  }).format(new Date(d));
 ---
 
 <Layout title={page.data.title} description={page.data.description}>
@@ -41,6 +48,7 @@ const { Content } = await page.render();
       <div class="container">
         <article class="content-article content-article--info">
           <h1>{page.data.title}</h1>
+          {page.data.date && <h4>{formatDate(page.data.date)}</h4>}
           <Content />
         </article>
       </div>
