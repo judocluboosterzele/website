@@ -57,8 +57,12 @@ function formatDateFromSlug(slug: string): string {
     <div class="verslagen-grid">
       {
         verslagenPages.map((v) => {
-          const firstImage = getFirstImage(v.body);
-          const snippet = getSnippet(v.body);
+          const firstImage =
+            v.data.images &&
+            Array.isArray(v.data.images) &&
+            v.data.images.length > 0
+              ? v.data.images[0].src
+              : getFirstImage(v.body);
           const formattedDate = formatDateFromSlug(v.slug);
 
           return (

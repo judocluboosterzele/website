@@ -8,9 +8,10 @@ import "../styles/info.css";
 interface Props {
   page: any;
   heroImage?: any;
+  images?: any[];
 }
 
-const { page, heroImage } = Astro.props;
+const { page, heroImage, images } = Astro.props;
 const { Content } = await page.render();
 
 const formatDate = (d: string) =>
@@ -50,6 +51,25 @@ const formatDate = (d: string) =>
           <h1>{page.data.title}</h1>
           {page.data.date && <h4>{formatDate(page.data.date)}</h4>}
           <Content />
+
+          {
+            images && images.length > 0 && (
+              <div class="content-images">
+                {images.map((img: any) => (
+                  <div class="image-wrapper">
+                    <Image
+                      src={img.src}
+                      alt={img.alt}
+                      width={800}
+                      height={600}
+                      format="webp"
+                      quality={85}
+                    />
+                  </div>
+                ))}
+              </div>
+            )
+          }
         </article>
       </div>
     </section>

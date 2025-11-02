@@ -31,6 +31,12 @@ if (page.data.heroImage) {
     console.error("Error loading hero image:", error);
   }
 }
+
+// Load images from frontmatter if they exist
+let contentImages: any[] = [];
+if (page.data.images) {
+  contentImages = page.data.images;
+}
 ---
 
 {
@@ -39,12 +45,16 @@ if (page.data.heroImage) {
   )
 }
 
-{pageType === "info" && <InfoPage page={page} heroImage={heroImage} />}
+{
+  pageType === "info" && (
+    <InfoPage page={page} heroImage={heroImage} images={contentImages} />
+  )
+}
 
 {pageType === "verslagen" && <VerslagenPage page={page} />}
 
 {
   !["lesgevers", "info", "verslagen"].includes(pageType) && (
-    <InfoPage page={page} heroImage={heroImage} />
+    <InfoPage page={page} heroImage={heroImage} images={contentImages} />
   )
 }
