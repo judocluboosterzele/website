@@ -25,3 +25,6 @@ U15/U18/U21
 - Zondag 08 maart 2026	Zelzater	Golden Cup	
 - Zaterdag 21 maart 2026	Kruisem	PK Senioren	(Alleen U18+)
 - Zaterdag 02 mei 2026	Gent	Open Bekers Gent
+
+
+(Laatst geüpdatet 6/11/2025)
