@@ -23,7 +23,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          npm install xml2js node-fetch
+          npm install xml2js
 
       - name: Fetch and process posts
         run: node src/scripts/fetch-facebook-posts.js
@@ -32,5 +32,5 @@ jobs:
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add .
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Update Facebook posts [skip ci]" && git push)
+          git add src/content/pages/facebook-posts/ src/assets/images/facebook-posts/
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Update Facebook posts" && git push)
