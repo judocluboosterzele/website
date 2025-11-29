@@ -26,7 +26,7 @@ jobs:
           npm install xml2js node-fetch
 
       - name: Fetch and process posts
-        run: node scripts/fetch-facebook-posts.js
+        run: node src/scripts/fetch-facebook-posts.js
 
       - name: Commit and push if changed
         run: |

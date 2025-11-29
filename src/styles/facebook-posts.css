@@ -106,6 +106,26 @@
   text-decoration: underline;
 }
 
+.view-all-container {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.view-all-link {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: #dc2626;
+  color: white;
+  text-decoration: none;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.view-all-link:hover {
+  background-color: #b91c1c;
+}
+
 /* Responsive design */
 @media (max-width: 768px) {
   .posts-grid {
