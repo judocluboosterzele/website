@@ -6,7 +6,9 @@ const pages = defineCollection({
     z.object({
       title: z.string(),
       description: z.string().optional(),
-      type: z.enum(["info", "lesgevers", "verslagen"]).default("info"),
+      type: z
+        .enum(["info", "lesgevers", "verslagen", "facebook-posts"])
+        .default("info"),
       heroImage: z.string().optional(),
       heroImageAlt: z.string().optional(),
       order: z.number().optional(),
@@ -32,6 +34,7 @@ const pages = defineCollection({
           })
         )
         .optional(),
+      facebookLink: z.string().url().optional(),
     }),
 });
 

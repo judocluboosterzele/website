@@ -95,6 +95,27 @@
   border: none; /* verwijdert standaard iframe border */
 }
 
+.facebook-link-container {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid #e5e7eb;
+}
+
+.facebook-link {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: #1877f2;
+  color: white;
+  text-decoration: none;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.facebook-link:hover {
+  background-color: #166fe5;
+}
+
 @media (max-width: 768px) {
   .hero-image-container {
     height: 180px;

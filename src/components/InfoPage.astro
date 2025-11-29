@@ -70,6 +70,21 @@ const formatDate = (d: string) =>
               </div>
             )
           }
+
+          {
+            page.data.facebookLink && (
+              <div class="facebook-link-container">
+                <a
+                  href={page.data.facebookLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="facebook-link"
+                >
+                  Bekijk op Facebook →
+                </a>
+              </div>
+            )
+          }
         </article>
       </div>
     </section>

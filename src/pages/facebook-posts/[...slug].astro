@@ -1,0 +1,53 @@
+---
+import { getCollection } from "astro:content";
+import InfoPage from "../../components/InfoPage.astro";
+import FacebookPostsPage from "../../components/FacebookPostsPage.astro";
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/Navbar.astro";
+import Footer from "../../components/Footer.astro";
+import "../../styles/verslagen.css";
+
+export async function getStaticPaths() {
+  const pages = await getCollection("pages");
+  const facebookPosts = pages.filter(
+    (p) =>
+      p.slug.startsWith("facebook-posts/") && p.slug !== "facebook-posts/index"
+  );
+
+  const indexPage = pages.find((p) => p.slug === "facebook-posts/index");
+
+  return [
+    {
+      params: { slug: undefined },
+      props: { page: indexPage, isIndex: true },
+    },
+    ...facebookPosts.map((post) => ({
+      params: { slug: post.slug.replace("facebook-posts/", "") },
+      props: { page: post, isIndex: false },
+    })),
+  ];
+}
+
+const { page, isIndex } = Astro.props;
+
+// Load images from frontmatter if they exist
+let contentImages: any[] = [];
+if (page?.data?.images) {
+  contentImages = page.data.images;
+}
+---
+
+{
+  isIndex ? (
+    <Layout
+      title={page?.data?.title || "Facebook Berichten"}
+      description={page?.data?.description}
+    >
+      <Navbar />
+      <FacebookPostsPage page={page} />
+      <Footer />
+    </Layout>
+  ) : (
+    <InfoPage page={page} images={contentImages} />
+  )
+}

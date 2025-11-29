@@ -1,0 +1,95 @@
+---
+import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
+
+const { page } = Astro.props;
+
+const allPages = await getCollection("pages");
+const facebookPosts = allPages.filter(
+  (p) =>
+    p.slug.startsWith("facebook-posts/") && p.slug !== "facebook-posts/index"
+);
+
+const sortedPosts = facebookPosts.sort((a, b) => {
+  const dateA = a.data.date ? new Date(a.data.date) : new Date(0);
+  const dateB = b.data.date ? new Date(b.data.date) : new Date(0);
+  return dateB.getTime() - dateA.getTime();
+});
+
+function formatDate(date: Date): string {
+  return date.toLocaleDateString("nl-BE", {
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
+  });
+}
+
+function getSnippet(content: string, maxLength = 150) {
+  const text = content.replace(/\n+/g, " ").trim();
+  if (text.length > maxLength) return text.substring(0, maxLength);
+  return text;
+}
+
+function needsReadMore(content: string, maxLength = 150) {
+  const text = content.replace(/\n+/g, " ").trim();
+  return text.length > maxLength;
+}
+---
+
+<section class="verslagen">
+  <h1>{page?.data?.title || "Nieuws"}</h1>
+
+  <div class="verslagen-grid">
+    {
+      sortedPosts.map((post) => {
+        const firstImage =
+          post.data.images &&
+          Array.isArray(post.data.images) &&
+          post.data.images.length > 0
+            ? post.data.images[0].src
+            : null;
+
+        const postDate = post.data.date ? new Date(post.data.date) : null;
+
+        return (
+          <a
+            href={`/facebook-posts/${post.slug.replace("facebook-posts/", "")}`}
+            class="verslag-card"
+          >
+            {firstImage && (
+              <div class="verslag-image-container">
+                <Image
+                  src={firstImage}
+                  alt={post.data.title}
+                  class="verslag-image"
+                  width={400}
+                  height={250}
+                  format="webp"
+                  quality={80}
+                />
+              </div>
+            )}
+            <div class="verslag-content">
+              <h3 class="verslag-title">{post.data.title}</h3>
+              <p class="verslag-snippet">
+                {getSnippet(post.body)}
+                {needsReadMore(post.body) && (
+                  <span class="verslag-readmore-container">
+                    <span class="verslag-dots">…</span>
+                    <br />
+                    <span class="verslag-readmore">Lees meer</span>
+                  </span>
+                )}
+              </p>
+              <div class="verslag-footer">
+                {postDate && (
+                  <time class="verslag-date">{formatDate(postDate)}</time>
+                )}
+              </div>
+            </div>
+          </a>
+        );
+      })
+    }
+  </div>
+</section>
