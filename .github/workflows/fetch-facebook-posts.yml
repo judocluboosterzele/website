@@ -32,5 +32,16 @@ jobs:
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add src/content/pages/facebook-posts/ src/assets/images/facebook-posts/
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Update Facebook posts" && git push)
+
+          # Only add the folders you want to commit
+          git add -A src/content/pages/facebook-posts/ src/assets/images/facebook-posts/
+
+          # If *these* staged files have no changes, exit successfully
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+
+          git commit -m "Update Facebook posts"
+          git push
+
