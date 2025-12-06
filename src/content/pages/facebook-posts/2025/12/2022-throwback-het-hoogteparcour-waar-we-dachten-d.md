@@ -14,8 +14,6 @@ images:
     alt: "2022 throwback! Het hoogteparcour waar we dachten dat we stoer waren… tot we halverwege begonnen te twijfelen 😅🧗‍♂️ - afbeelding 4"
 ---
 
-2022 throwback! Het hoogteparcour waar we dachten dat we stoer waren… tot we halverwege begonnen te twijfelen 😅🧗‍♂️
-
 Maar hé, we hebben het gehaald én er kei hard om gelachen!
 
 

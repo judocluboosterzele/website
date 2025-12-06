@@ -8,10 +8,6 @@ images:
     alt: "Throwback dit jaar: - afbeelding 1"
 ---
 
-Throwback dit jaar:
-
-
-
 Weet je nog dat er dit jaar vier nieuwe zwarte gordels zijn bijgekomen? 🥋✨
 
 Een prachtig hoogtepunt voor onze club! Dankzij hard werk en doorzettingsvermogen hebben vier leden deze mijlpaal bereikt. We zijn super trots—op naar nog meer mooie momenten!

@@ -22,8 +22,6 @@ images:
     alt: "Gisteren kwam de Sint langs 🎁 - afbeelding 8"
 ---
 
-Gisteren kwam de Sint langs 🎁
-
 ’t Waren misschien wat sloebers van pieten 😄
 
 maar hé… iedereen kreeg wél een brooddoos!

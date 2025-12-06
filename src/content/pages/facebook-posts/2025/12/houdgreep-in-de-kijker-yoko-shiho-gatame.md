@@ -8,10 +8,6 @@ images:
     alt: "🥋 Houdgreep in de kijker: Yoko Shiho Gatame - afbeelding 1"
 ---
 
-🥋 Houdgreep in de kijker: Yoko Shiho Gatame
-
-
-
 Vandaag zetten we Yoko Shiho Gatame in de spotlight!
 
 Een stevige controletechniek waarbij je je tegenstander zijwaarts vastzet met maximale druk en stabiliteit. Perfect om een houdgreep te domineren en de controle volledig over te nemen.
