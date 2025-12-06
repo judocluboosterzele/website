@@ -164,6 +164,13 @@ async function main() {
     console.log(`   Date: ${year}-${month}-${day}`);
 
     const textContent = extractTextFromHTML(description);
+
+    // Remove first line if it equals the title
+    let cleanedText = textContent;
+    if (cleanedText.split("\n")[0].trim() === title.trim()) {
+      cleanedText = cleanedText.split("\n").slice(1).join("\n").trim();
+    }
+
     const imageURLs = extractImageURLs(item);
 
     console.log(`   Found ${imageURLs.length} unique image(s)`);
@@ -212,7 +219,8 @@ async function main() {
     }
 
     markdown += "---\n\n";
-    markdown += textContent;
+    // markdown += textContent;
+    markdown += cleanedText;
 
     // Write markdown file
     const filepath = path.join(postFolder, `${slug}.md`);
