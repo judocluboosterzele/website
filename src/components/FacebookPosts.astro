@@ -71,9 +71,14 @@ function getSnippet(content: string, maxLength = 200) {
               </div>
             )}
             <div class="post-content">
+              <p class="post-title">
+                <strong>{post.data.title}</strong>
+              </p>
+
               <p class="post-description" style="white-space: pre-line;">
                 {getSnippet(post.body)}
               </p>
+
               <div class="post-footer">
                 {postDate && (
                   <time class="post-date">{formatDate(postDate)}</time>

@@ -126,6 +126,14 @@
   background-color: #b91c1c;
 }
 
+.post-title {
+  color: var(--color-primary, #1976d2);
+  font-size: 1.3rem;
+  margin: 0 0 0.5rem 0;
+  font-weight: 700;
+  text-align: center;
+}
+
 /* Responsive design */
 @media (max-width: 768px) {
   .posts-grid {
