@@ -14,6 +14,7 @@ description: "Informatie over de verschillende tornooien"
 Inschrijven: [Klik hier](https://docs.google.com/forms/d/e/1FAIpQLSca3QRoq4wBV8r20Vx4FxAOA688kpGuXjkVxdrSWqDMwuhKCQ/viewform)
 
 - Zondag 18 Januari 2026: Aalst Ontmoeting tornooi
+- Zondag 1 maart 2026: OZAK
 - Zaterdag 07 maart 2026: Zelzate Ontmoeting tornooi
 - Zondag 15 maart 2026: Sint Martens Latem Kids Cup randori dag
 - Zondag 22 maart 2026: Kruishoutem Ontmoeting tornooi
