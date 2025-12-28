@@ -8,3 +8,4 @@ images:
     alt: "#dailydecember - afbeelding 1"
 ---
 
+#dailydecember
