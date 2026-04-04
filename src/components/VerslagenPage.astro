@@ -6,14 +6,31 @@ import "../styles/verslagen.css";
 
 import { getCollection } from "astro:content";
 import { Image } from "astro:assets";
+import { resolveContentImage } from "../lib/contentImages.ts";
 
 const { page } = Astro.props;
 
 const allVerslagen = await getCollection("pages");
 const verslagenPages = allVerslagen.filter(
   (p) =>
-    p.slug.startsWith("competitie/verslagen/") &&
-    p.slug !== "competitie/verslagen/index"
+    p.id.startsWith("competitie/verslagen/") &&
+    p.id !== "competitie/verslagen/index"
+);
+
+const verslagenWithImages = await Promise.all(
+  verslagenPages.map(async (v) => {
+    const firstImage =
+      v.data.images &&
+      Array.isArray(v.data.images) &&
+      v.data.images.length > 0
+        ? v.data.images[0].src ?? v.data.images[0]
+        : getFirstImage(v.body);
+
+    return {
+      page: v,
+      firstImage: await resolveContentImage(firstImage, v.filePath),
+    };
+  })
 );
 
 function getFirstImage(content: string) {
@@ -56,18 +73,12 @@ function formatDateFromSlug(slug: string): string {
 
     <div class="verslagen-grid">
       {
-        verslagenPages.map((v) => {
-          const firstImage =
-            v.data.images &&
-            Array.isArray(v.data.images) &&
-            v.data.images.length > 0
-              ? v.data.images[0].src
-              : getFirstImage(v.body);
-          const formattedDate = formatDateFromSlug(v.slug);
+        verslagenWithImages.map(({ page: v, firstImage }) => {
+          const formattedDate = formatDateFromSlug(v.id);
 
           return (
             <a
-              href={`/competitie/verslagen/${v.slug.replace(
+              href={`/competitie/verslagen/${v.id.replace(
                 "competitie/verslagen/",
                 ""
               )}`}

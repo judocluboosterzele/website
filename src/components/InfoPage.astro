@@ -1,8 +1,10 @@
 ---
 import { Image } from "astro:assets";
+import { render } from "astro:content";
 import Layout from "../layouts/Layout.astro";
 import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
+import { resolveContentImage } from "../lib/contentImages.ts";
 import "../styles/info.css";
 
 interface Props {
@@ -12,7 +14,16 @@ interface Props {
 }
 
 const { page, heroImage, images } = Astro.props;
-const { Content } = await page.render();
+
+const resolvedHeroImage = await resolveContentImage(heroImage, page?.filePath);
+const resolvedImages = await Promise.all(
+  (images ?? []).map(async (img: any) => ({
+    src: await resolveContentImage(img.src ?? img, page?.filePath),
+    alt: img.alt || "",
+  }))
+);
+
+const { Content } = await render(page);
 
 const formatDate = (d: string) =>
   new Intl.DateTimeFormat("nl-BE", {
@@ -27,12 +38,12 @@ const formatDate = (d: string) =>
 
   <main class="page-type-info">
     {
-      heroImage && (
+      resolvedHeroImage && (
         <section class="page-hero">
           <div class="container">
             <div class="hero-image-container">
               <Image
-                src={heroImage}
+                src={resolvedHeroImage}
                 alt={page.data.heroImageAlt || page.data.title}
                 width={800}
                 height={450}
@@ -53,9 +64,9 @@ const formatDate = (d: string) =>
           <Content />
 
           {
-            images && images.length > 0 && (
+            resolvedImages && resolvedImages.length > 0 && (
               <div class="content-images">
-                {images.map((img: any) => (
+                {resolvedImages.map((img: any) => (
                   <div class="image-wrapper">
                     <Image
                       src={img.src}
