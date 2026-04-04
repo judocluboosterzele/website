@@ -1,8 +1,7 @@
 import path from "path";
-import type { ImageMetadata } from "astro:assets";
 
 const assetImports = import.meta.glob<{
-  default: ImageMetadata;
+  default: any;
 }>("/src/assets/images/**/*.{jpeg,jpg,png,gif,webp}");
 
 async function tryImportAsset(assetPath: string) {
@@ -17,7 +16,7 @@ export async function resolveContentImage(
   raw: string | { src?: string } | null | undefined,
   baseFilePath?: string,
   baseFolder?: string,
-): Promise<ImageMetadata | string | null> {
+): Promise<any | string | null> {
   if (!raw) return null;
   if (typeof raw !== "string") {
     return resolveContentImage(raw.src, baseFilePath, baseFolder);

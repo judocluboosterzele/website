@@ -6,7 +6,7 @@ import "../styles/verslagen.css";
 
 import { getCollection } from "astro:content";
 import { Image } from "astro:assets";
-import { resolveContentImage } from "../lib/contentImages.ts";
+import { resolveContentImage } from "../lib/contentImages";
 
 const { page } = Astro.props;
 
@@ -73,7 +73,13 @@ function formatDateFromSlug(slug: string): string {
 
     <div class="verslagen-grid">
       {
-        verslagenWithImages.map(({ page: v, firstImage }) => {
+        verslagenPages.map((v) => {
+          const firstImage =
+            v.data.images &&
+            Array.isArray(v.data.images) &&
+            v.data.images.length > 0
+              ? v.data.images[0].src ?? v.data.images[0]
+              : getFirstImage(v.body);
           const formattedDate = formatDateFromSlug(v.id);
 
           return (
@@ -87,7 +93,7 @@ function formatDateFromSlug(slug: string): string {
               {firstImage && (
                 <div class="verslag-image-container">
                   <Image
-                    src={firstImage}
+                    src={firstImage?.src ?? firstImage}
                     alt={v.data.title}
                     class="verslag-image"
                     width={400}
