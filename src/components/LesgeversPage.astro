@@ -18,7 +18,7 @@ const resolvedHeroImage = await resolveContentImage(heroImage, page?.filePath);
 const lesgeversWithImages = await Promise.all(
   lesgeversData.map(async (lesgever: any) => ({
     ...lesgever,
-    imageAsset: await resolveContentImage(lesgever.image, page?.filePath),
+    imageAsset: await resolveContentImage(lesgever.image, page?.filePath, "lesgevers"),
   }))
 );
 

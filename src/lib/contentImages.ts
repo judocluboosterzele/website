@@ -16,10 +16,11 @@ async function tryImportAsset(assetPath: string) {
 export async function resolveContentImage(
   raw: string | { src?: string } | null | undefined,
   baseFilePath?: string,
+  baseFolder?: string,
 ): Promise<ImageMetadata | string | null> {
   if (!raw) return null;
   if (typeof raw !== "string") {
-    return resolveContentImage(raw.src, baseFilePath);
+    return resolveContentImage(raw.src, baseFilePath, baseFolder);
   }
 
   const normalizedRaw = raw.trim();
@@ -44,9 +45,13 @@ export async function resolveContentImage(
   }
 
   if (!normalizedRaw.startsWith("/")) {
-    candidatePaths.add(
-      `/src/assets/images/${normalizedRaw.replace(/^\/+/, "")}`,
-    );
+    if (baseFolder) {
+      candidatePaths.add(`/src/assets/images/${baseFolder}/${normalizedRaw}`);
+    } else {
+      candidatePaths.add(
+        `/src/assets/images/${normalizedRaw.replace(/^\/+/, "")}`,
+      );
+    }
   }
 
   if (baseFilePath) {
