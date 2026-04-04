@@ -18,31 +18,31 @@ function buildNavStructure(pages: CollectionEntry<"pages">[]) {
 
   const folders = new Set<string>();
   pages.forEach((page) => {
-    if (page.slug.includes("/")) {
-      folders.add(page.slug.split("/")[0]);
+    if (page.id.includes("/")) {
+      folders.add(page.id.split("/")[0]);
     }
   });
 
   folders.forEach((folderName) => {
-    const indexFile = pages.find((page) => page.slug === `${folderName}/index`);
-    const standaloneFile = pages.find((page) => page.slug === folderName);
+    const indexFile = pages.find((page) => page.id === `${folderName}/index`);
+    const standaloneFile = pages.find((page) => page.id === folderName);
     const folderFiles = pages.filter(
       (page) =>
-        page.slug.startsWith(`${folderName}/`) &&
-        page.slug !== `${folderName}/index` &&
-        page.slug.split("/").length === 2
+        page.id.startsWith(`${folderName}/`) &&
+        page.id !== `${folderName}/index` &&
+        page.id.split("/").length === 2
     );
 
     const titleFile = indexFile || standaloneFile;
 
     if (titleFile) {
-      if (indexFile) processed.add(indexFile.slug);
-      if (standaloneFile) processed.add(standaloneFile.slug);
+      if (indexFile) processed.add(indexFile.id);
+      if (standaloneFile) processed.add(standaloneFile.id);
 
       if (titleFile.data?.navOrder) {
         folderFiles.sort((a, b) => {
-          const aSlug = a.slug.replace(`${folderName}/`, "");
-          const bSlug = b.slug.replace(`${folderName}/`, "");
+          const aSlug = a.id.replace(`${folderName}/`, "");
+          const bSlug = b.id.replace(`${folderName}/`, "");
           const aIndex = titleFile.data.navOrder?.indexOf(aSlug) ?? -1;
           const bIndex = titleFile.data.navOrder?.indexOf(bSlug) ?? -1;
 
@@ -64,19 +64,19 @@ function buildNavStructure(pages: CollectionEntry<"pages">[]) {
         hasChildren: folderFiles.length > 0,
         children: folderFiles.map((file) => ({
           title: file.data.title,
-          slug: file.slug,
+          slug: file.id,
         })),
       });
 
-      folderFiles.forEach((file) => processed.add(file.slug));
+      folderFiles.forEach((file) => processed.add(file.id));
     }
   });
 
   const topLevelPages = pages.filter(
     (page) =>
-      !page.slug.includes("/") &&
-      page.slug !== "index" &&
-      !processed.has(page.slug)
+      !page.id.includes("/") &&
+      page.id !== "index" &&
+      !processed.has(page.id)
   );
 
   topLevelPages.sort((a, b) => (a.data.order ?? 999) - (b.data.order ?? 999));
@@ -84,13 +84,13 @@ function buildNavStructure(pages: CollectionEntry<"pages">[]) {
   topLevelPages.forEach((page) => {
     nav.push({
       title: page.data.title,
-      slug: page.slug,
+      slug: page.id,
       hasChildren: false,
       children: [],
     });
   });
 
-  const rootIndex = pages.find((p) => p.slug === "index");
+  const rootIndex = pages.find((p) => p.id === "index");
   if (rootIndex?.data?.navOrder) {
     nav.sort((a, b) => {
       const aIndex = rootIndex.data.navOrder?.indexOf(a.slug) ?? -1;
@@ -103,10 +103,10 @@ function buildNavStructure(pages: CollectionEntry<"pages">[]) {
   } else {
     nav.sort((a, b) => {
       const aPage = pages.find(
-        (p) => p.slug === a.slug || p.slug === a.slug + "/index"
+        (p) => p.id === a.slug || p.id === a.slug + "/index"
       );
       const bPage = pages.find(
-        (p) => p.slug === b.slug || p.slug === b.slug + "/index"
+        (p) => p.id === b.slug || p.id === b.slug + "/index"
       );
       return (aPage?.data.order ?? 999) - (bPage?.data.order ?? 999);
     });

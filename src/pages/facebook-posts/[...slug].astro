@@ -11,10 +11,10 @@ export async function getStaticPaths() {
   const pages = await getCollection("pages");
   const facebookPosts = pages.filter(
     (p) =>
-      p.slug.startsWith("facebook-posts/") && p.slug !== "facebook-posts/index"
+      p.id.startsWith("facebook-posts/") && p.id !== "facebook-posts/index"
   );
 
-  const indexPage = pages.find((p) => p.slug === "facebook-posts/index");
+  const indexPage = pages.find((p) => p.id === "facebook-posts/index");
 
   return [
     {
@@ -22,7 +22,7 @@ export async function getStaticPaths() {
       props: { page: indexPage, isIndex: true },
     },
     ...facebookPosts.map((post) => ({
-      params: { slug: post.slug.replace("facebook-posts/", "") },
+      params: { slug: post.id.replace("facebook-posts/", "") },
       props: { page: post, isIndex: false },
     })),
   ];

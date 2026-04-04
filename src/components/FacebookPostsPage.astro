@@ -1,13 +1,14 @@
 ---
 import { getCollection } from "astro:content";
 import { Image } from "astro:assets";
+import { resolveContentImage } from "../lib/contentImages";
 
 const { page } = Astro.props;
 
 const allPages = await getCollection("pages");
 const facebookPosts = allPages.filter(
   (p) =>
-    p.slug.startsWith("facebook-posts/") && p.slug !== "facebook-posts/index"
+    p.id.startsWith("facebook-posts/") && p.id !== "facebook-posts/index"
 );
 
 const sortedPosts = facebookPosts.sort((a, b) => {
@@ -15,6 +16,22 @@ const sortedPosts = facebookPosts.sort((a, b) => {
   const dateB = b.data.date ? new Date(b.data.date) : new Date(0);
   return dateB.getTime() - dateA.getTime();
 });
+
+const postsWithImages = await Promise.all(
+  sortedPosts.map(async (post) => {
+    const firstImage =
+      post.data.images &&
+      Array.isArray(post.data.images) &&
+      post.data.images.length > 0
+        ? post.data.images[0].src ?? post.data.images[0]
+        : null;
+
+    return {
+      post,
+      firstImage: await resolveContentImage(firstImage, post.filePath),
+    };
+  })
+);
 
 function formatDate(date: Date): string {
   return date.toLocaleDateString("nl-BE", {
@@ -41,19 +58,12 @@ function needsReadMore(content: string, maxLength = 150) {
 
   <div class="verslagen-grid">
     {
-      sortedPosts.map((post) => {
-        const firstImage =
-          post.data.images &&
-          Array.isArray(post.data.images) &&
-          post.data.images.length > 0
-            ? post.data.images[0].src
-            : null;
-
+      postsWithImages.map(({ post, firstImage }) => {
         const postDate = post.data.date ? new Date(post.data.date) : null;
 
         return (
           <a
-            href={`/facebook-posts/${post.slug.replace("facebook-posts/", "")}`}
+            href={`/facebook-posts/${post.id.replace("facebook-posts/", "")}`}
             class="verslag-card"
           >
             {firstImage && (

@@ -7,7 +7,7 @@ import VerslagenPage from "../components/VerslagenPage.astro";
 export async function getStaticPaths() {
   const pages = await getCollection("pages");
   return pages.map((page) => ({
-    params: { slug: page.slug },
+    params: { slug: page.id },
     props: page,
   }));
 }
@@ -15,22 +15,7 @@ export async function getStaticPaths() {
 const page = Astro.props;
 const pageType = page.data.type || "info";
 
-// Dynamic import for hero image if it exists
-let heroImage: any = null;
-if (page.data.heroImage) {
-  try {
-    const images = import.meta.glob(
-      "/src/assets/images/**/*.{jpeg,jpg,png,gif,webp}"
-    );
-    const imagePath = `/src/assets/images/${page.data.heroImage}`;
-    if (images[imagePath]) {
-      const imageModule = (await images[imagePath]()) as any;
-      heroImage = imageModule.default;
-    }
-  } catch (error) {
-    console.error("Error loading hero image:", error);
-  }
-}
+const heroImage = page.data.heroImage ?? null;
 
 // Load images from frontmatter if they exist
 let contentImages: any[] = [];

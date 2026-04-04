@@ -1,8 +1,10 @@
 ---
 import { Image } from "astro:assets";
+import { render } from "astro:content";
 import Layout from "../layouts/Layout.astro";
 import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
+import { resolveContentImage } from "../lib/contentImages";
 import "../styles/lesgevers.css";
 
 interface Props {
@@ -11,45 +13,16 @@ interface Props {
 }
 
 const { page, heroImage } = Astro.props;
-const { Content } = await page.render();
-
-// 1. Haal de onbewerkte lesgeversdata op uit de frontmatter.
 const lesgeversData = page.data.lesgevers || [];
-
-// 2. Gebruik `import.meta.glob` om alle mogelijke afbeeldingen te vinden.
-// Dit is de standaardmanier in Astro/Vite om dynamisch met afbeeldingen te werken.
-// Het geeft Astro de informatie die het nodig heeft om de afbeeldingen te optimaliseren.
-const allLesgeverImages = import.meta.glob<{ default: ImageMetadata }>(
-  "/src/assets/images/lesgevers/*"
-);
-
-// 3. Koppel de data aan de juiste, geïmporteerde afbeelding.
+const resolvedHeroImage = await resolveContentImage(heroImage, page?.filePath);
 const lesgeversWithImages = await Promise.all(
-  lesgeversData.map(async (lesgever: any) => {
-    // We bouwen het volledige, verwachte pad naar de afbeelding op.
-    const imagePath = `/src/assets/images/lesgevers/${lesgever.image}`;
-
-    // Zoek de import-functie voor dit specifieke pad in de lijst van `allLesgeverImages`.
-    const imageImporter = allLesgeverImages[imagePath];
-
-    if (!imageImporter) {
-      console.error(`Afbeelding niet gevonden op pad: ${imagePath}`);
-      return {
-        ...lesgever,
-        imageAsset: null, // Zorgt ervoor dat de site niet crasht als een afbeelding mist.
-      };
-    }
-
-    // Voer de import-functie uit. Dit laadt de specifieke afbeelding en haar metadata.
-    const imageModule = await imageImporter();
-
-    return {
-      ...lesgever,
-      // Het 'default' export is wat de <Image> component nodig heeft.
-      imageAsset: imageModule.default,
-    };
-  })
+  lesgeversData.map(async (lesgever: any) => ({
+    ...lesgever,
+    imageAsset: await resolveContentImage(lesgever.image, page?.filePath, "lesgevers"),
+  }))
 );
+
+const { Content } = await render(page);
 ---
 
 <Layout title={page.data.title} description={page.data.description}>
@@ -57,12 +30,12 @@ const lesgeversWithImages = await Promise.all(
 
   <main class="page-type-lesgevers">
     {
-      heroImage && (
+      resolvedHeroImage && (
         <section class="page-hero">
           <div class="container">
             <div class="hero-image-container">
               <Image
-                src={heroImage}
+                src={resolvedHeroImage}
                 alt={page.data.heroImageAlt || page.data.title}
                 width={800}
                 height={450}
