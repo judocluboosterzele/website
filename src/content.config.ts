@@ -1,5 +1,4 @@
-import { defineCollection } from "astro:content";
-import { z } from "astro/zod";
+import { defineCollection, z } from "astro:content";
 import { glob } from "astro/loaders";
 
 const pages = defineCollection({
@@ -10,7 +9,7 @@ const pages = defineCollection({
     type: z
       .enum(["info", "lesgevers", "verslagen", "facebook-posts"])
       .default("info"),
-    heroImage: z.string().optional(),
+    heroImage: z.string().optional(), // back to string
     heroImageAlt: z.string().optional(),
     order: z.number().optional(),
     navOrder: z.array(z.string()).optional(),
@@ -22,7 +21,7 @@ const pages = defineCollection({
       .array(
         z.object({
           name: z.string(),
-          image: z.string(),
+          image: z.string(), // back to string
           info: z.array(z.string()),
         }),
       )
@@ -30,15 +29,13 @@ const pages = defineCollection({
     images: z
       .array(
         z.object({
-          src: z.string(),
+          src: z.string(), // back to string
           alt: z.string(),
         }),
       )
       .optional(),
-    facebookLink: z.url().optional(),
+    facebookLink: z.string().url().optional(),
   }),
 });
 
-export const collections = {
-  pages: pages,
-};
+export const collections = { pages };

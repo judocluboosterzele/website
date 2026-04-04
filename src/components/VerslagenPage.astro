@@ -17,21 +17,21 @@ const verslagenPages = allVerslagen.filter(
     p.id !== "competitie/verslagen/index"
 );
 
-const verslagenWithImages = await Promise.all(
-  verslagenPages.map(async (v) => {
-    const firstImage =
-      v.data.images &&
-      Array.isArray(v.data.images) &&
-      v.data.images.length > 0
-        ? v.data.images[0].src ?? v.data.images[0]
-        : getFirstImage(v.body);
+const verslagenWithImages = verslagenPages.map((v) => {
+  const firstImageSrc =
+    v.data.images &&
+    Array.isArray(v.data.images) &&
+    v.data.images.length > 0
+      ? v.data.images[0].src ?? v.data.images[0]
+      : getFirstImage(v.body);
 
-    return {
-      page: v,
-      firstImage: await resolveContentImage(firstImage, v.filePath),
-    };
-  })
-);
+  const folder = v.id.split("/").slice(0, -1).join("/");
+
+  return {
+    page: v,
+    firstImage: resolveContentImage(firstImageSrc, folder),
+  };
+});
 
 function getFirstImage(content: string) {
   const match = content.match(/!\[.*?\]\((.*?)\)/);
@@ -73,13 +73,7 @@ function formatDateFromSlug(slug: string): string {
 
     <div class="verslagen-grid">
       {
-        verslagenPages.map((v) => {
-          const firstImage =
-            v.data.images &&
-            Array.isArray(v.data.images) &&
-            v.data.images.length > 0
-              ? v.data.images[0].src ?? v.data.images[0]
-              : getFirstImage(v.body);
+        verslagenWithImages.map(({ page: v, firstImage }) => {
           const formattedDate = formatDateFromSlug(v.id);
 
           return (
@@ -93,7 +87,7 @@ function formatDateFromSlug(slug: string): string {
               {firstImage && (
                 <div class="verslag-image-container">
                   <Image
-                    src={firstImage?.src ?? firstImage}
+                    src={firstImage}
                     alt={v.data.title}
                     class="verslag-image"
                     width={400}

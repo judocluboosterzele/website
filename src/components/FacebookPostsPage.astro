@@ -17,21 +17,21 @@ const sortedPosts = facebookPosts.sort((a, b) => {
   return dateB.getTime() - dateA.getTime();
 });
 
-const postsWithImages = await Promise.all(
-  sortedPosts.map(async (post) => {
-    const firstImage =
-      post.data.images &&
-      Array.isArray(post.data.images) &&
-      post.data.images.length > 0
-        ? post.data.images[0].src ?? post.data.images[0]
-        : null;
+const postsWithImages = sortedPosts.map((post) => {
+  const firstImage =
+    post.data.images &&
+    Array.isArray(post.data.images) &&
+    post.data.images.length > 0
+      ? post.data.images[0].src ?? post.data.images[0]
+      : null;
 
-    return {
-      post,
-      firstImage: await resolveContentImage(firstImage, post.filePath),
-    };
-  })
-);
+  return {
+    post,
+    firstImage: firstImage
+      ? resolveContentImage(firstImage, "facebook-posts")
+      : null,
+  };
+});
 
 function formatDate(date: Date): string {
   return date.toLocaleDateString("nl-BE", {

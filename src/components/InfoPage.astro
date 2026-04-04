@@ -13,15 +13,17 @@ interface Props {
   images?: any[];
 }
 
-const { page, heroImage, images } = Astro.props;
+const { page, images } = Astro.props;
 
-const resolvedHeroImage = await resolveContentImage(heroImage, page?.filePath);
-const resolvedImages = await Promise.all(
-  (images ?? []).map(async (img: any) => ({
-    src: await resolveContentImage(img.src ?? img, page?.filePath),
-    alt: img.alt || "",
-  }))
-);
+const folder = page?.id
+  ? page.id.split("/").slice(0, -1).join("/")
+  : "general";
+
+const resolvedHeroImage = resolveContentImage(page?.data?.heroImage, folder);
+const resolvedImages = (images ?? []).map((img: any) => ({
+  src: resolveContentImage(img.src ?? img, folder),
+  alt: img.alt || "",
+})).filter((img: any) => img.src !== null);
 
 const { Content } = await render(page);
 

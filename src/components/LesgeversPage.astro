@@ -12,15 +12,14 @@ interface Props {
   heroImage?: any;
 }
 
-const { page, heroImage } = Astro.props;
+const { page } = Astro.props;
 const lesgeversData = page.data.lesgevers || [];
+const heroImage = resolveContentImage(page.data.heroImage, "lesgevers");
 const resolvedHeroImage = await resolveContentImage(heroImage, page?.filePath);
-const lesgeversWithImages = await Promise.all(
-  lesgeversData.map(async (lesgever: any) => ({
-    ...lesgever,
-    imageAsset: await resolveContentImage(lesgever.image, page?.filePath, "lesgevers"),
-  }))
-);
+const lesgeversWithImages = lesgeversData.map((lesgever: any) => ({
+  ...lesgever,
+  imageAsset: resolveContentImage(lesgever.image, "lesgevers"),
+}));
 
 const { Content } = await render(page);
 ---
