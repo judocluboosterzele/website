@@ -23,8 +23,18 @@ export function resolveContentImage(
     return assetImports[key]?.default ?? null;
   }
 
-  // Bare filename or subfolder/filename — look in the given folder
   const clean = name.replace(/^\/+/, "");
+
+  // Has subfolders — try directly under /src/assets/images/ first
+  if (clean.includes("/")) {
+    const key = `/src/assets/images/${clean}`;
+    return assetImports[key]?.default ?? null;
+  }
+
+  // Bare filename — try page folder first, then root
   const key = `/src/assets/images/${folder}/${clean}`;
-  return assetImports[key]?.default ?? null; // null if not found, never raw string
+  if (assetImports[key]) return assetImports[key].default;
+
+  const rootKey = `/src/assets/images/${clean}`;
+  return assetImports[rootKey]?.default ?? null;
 }
