@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@astrojs/markdown-remark": "^7.1.0",
-    "astro": "^6.1.1",
+    "astro": "^6.1.5",
     "node-fetch": "^3.3.2",
     "rss-parser": "^3.13.0",
     "xml2js": "^0.6.2"
