@@ -3,7 +3,7 @@ title: "Gezond & Ethisch sporten"
 description: "Gezond & Ethisch sporten"
 heroImage: "feature/gezondsporten.png"
 heroImageAlt: "Logo Gezond Sporten"
-navOrder: ["api", "gedragscodes", "privacy"]
+navOrder: ["api", "gog", "gedragscodes", "sociale-kaart", "privacy"]
 ---
 
 Bij judoclub Oosterzele vzw hechten we veel belang aan het je “goed voelen” in de club. De club moet de plaats zijn waar je jezelf kan zijn ongeacht wie je bent of hoe je denkt. Het is de plaats waar je tot mentale rust kan komen . De plaats waar je vrienden kan maken en leuke dingen doet.

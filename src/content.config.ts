@@ -1,4 +1,5 @@
-import { defineCollection, z } from "astro:content";
+import { defineCollection } from "astro:content";
+import { z } from "zod";
 import { glob } from "astro/loaders";
 
 const pages = defineCollection({
@@ -7,7 +8,7 @@ const pages = defineCollection({
     title: z.string(),
     description: z.string().optional(),
     type: z
-      .enum(["info", "lesgevers", "verslagen", "facebook-posts"])
+      .enum(["info", "lesgevers", "verslagen", "facebook-posts", "pdf"])
       .default("info"),
     heroImage: z.string().optional(), // back to string
     heroImageAlt: z.string().optional(),
@@ -34,6 +35,7 @@ const pages = defineCollection({
         }),
       )
       .optional(),
+    pdf: z.string().optional(),
     facebookLink: z.string().url().optional(),
   }),
 });

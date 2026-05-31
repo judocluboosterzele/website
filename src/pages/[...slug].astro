@@ -6,10 +6,12 @@ import VerslagenPage from "../components/VerslagenPage.astro";
 
 export async function getStaticPaths() {
   const pages = await getCollection("pages");
-  return pages.map((page) => ({
-    params: { slug: page.id },
-    props: page,
-  }));
+  return pages
+    .filter((page) => page.data.type !== "pdf")
+    .map((page) => ({
+      params: { slug: page.id },
+      props: page,
+    }));
 }
 
 const page = Astro.props;

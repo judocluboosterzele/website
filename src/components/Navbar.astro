@@ -9,8 +9,9 @@ function buildNavStructure(pages: CollectionEntry<"pages">[]) {
   type NavItem = {
     title: string;
     slug: string;
+    href: string;
     hasChildren: boolean;
-    children: { title: string; slug: string }[];
+    children: { title: string; slug: string; href: string }[];
   };
 
   const nav: NavItem[] = [];
@@ -34,6 +35,11 @@ function buildNavStructure(pages: CollectionEntry<"pages">[]) {
     );
 
     const titleFile = indexFile || standaloneFile;
+
+    const titleFileHref =
+      titleFile?.data.type === "pdf"
+        ? titleFile?.data.pdf ?? `/${folderName}`
+        : `/${folderName}`;
 
     if (titleFile) {
       if (indexFile) processed.add(indexFile.id);
@@ -61,10 +67,15 @@ function buildNavStructure(pages: CollectionEntry<"pages">[]) {
       nav.push({
         title: titleFile.data.title,
         slug: folderName,
+        href: titleFileHref,
         hasChildren: folderFiles.length > 0,
         children: folderFiles.map((file) => ({
           title: file.data.title,
           slug: file.id,
+          href:
+            file.data.type === "pdf"
+              ? file.data.pdf ?? `/${file.id}`
+              : `/${file.id}`,
         })),
       });
 
@@ -85,6 +96,10 @@ function buildNavStructure(pages: CollectionEntry<"pages">[]) {
     nav.push({
       title: page.data.title,
       slug: page.id,
+      href:
+        page.data.type === "pdf"
+          ? page.data.pdf ?? `/${page.id}`
+          : `/${page.id}`,
       hasChildren: false,
       children: [],
     });
@@ -143,7 +158,7 @@ const navItems = buildNavStructure(allPages);
           navItems.map((item) => (
             <li class:list={["nav-item", { "has-dropdown": item.hasChildren }]}>
               <div class="nav-item-row">
-                <a href={`/${item.slug}`} class="nav-link">
+                <a href={item.href} class="nav-link">
                   {item.title}
                 </a>
                 {item.hasChildren && (
@@ -170,7 +185,7 @@ const navItems = buildNavStructure(allPages);
                 <ul class="dropdown-menu">
                   {item.children.map((child) => (
                     <li class="dropdown-item">
-                      <a href={`/${child.slug}`} class="dropdown-link">
+                      <a href={child.href} class="dropdown-link">
                         {child.title}
                       </a>
                     </li>
