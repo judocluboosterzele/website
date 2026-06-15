@@ -41,13 +41,15 @@ function formatDate(date: Date): string {
   });
 }
 
-function getSnippet(content: string, maxLength = 150) {
+function getSnippet(content: string | undefined, maxLength = 150) {
+  if (!content) return "";
   const text = content.replace(/\n+/g, " ").trim();
   if (text.length > maxLength) return text.substring(0, maxLength);
   return text;
 }
 
-function needsReadMore(content: string, maxLength = 150) {
+function needsReadMore(content: string | undefined, maxLength = 150) {
+  if (!content) return false;
   const text = content.replace(/\n+/g, " ").trim();
   return text.length > maxLength;
 }

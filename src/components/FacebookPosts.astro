@@ -46,7 +46,8 @@ function formatDate(date: Date): string {
   });
 }
 
-function getSnippet(content: string, maxLength = 200) {
+function getSnippet(content: string | undefined, maxLength = 200) {
+  if (!content) return "";
   const text = content.replace(/\n+/g, " ").trim();
   if (text.length > maxLength) return text.substring(0, maxLength) + "...";
   return text;
