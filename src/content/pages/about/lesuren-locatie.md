@@ -34,16 +34,16 @@ description: "Informatie over de lesuren en de locatie"
 
 |     | <span style="visibility:hidden;">Data Kleuterjudo</span> |      |
 | :-: | :------------------------------------------------------: | ---- |
-| 31  |                         augustus                         | 2025 |
-|  7  |                        september                         | 2025 |
-| 14  |                        september                         | 2025 |
-| 21  |                        september                         | 2025 |
-|  5  |                         oktober                          | 2025 |
-| 19  |                         oktober                          | 2025 |
-| 26  |                         oktober                          | 2025 |
-|  9  |                         november                         | 2025 |
-| 30  |                         november                         | 2025 |
-|  7  |                         december                         | 2025 |
+| 30  |                         augustus                         | 2026 |
+|  6  |                        september                         | 2026 |
+| 13  |                        september                         | 2026 |
+| 20  |                        september                         | 2026 |
+|  4  |                         oktober                          | 2026 |
+| 18  |                         oktober                          | 2026 |
+| 25  |                         oktober                          | 2026 |
+| 29  |                         november                         | 2026 |
+|  6  |                         december                         | 2026 |
+| 13  |                         december                         | 2026 |
 
 ## Locatie
 
