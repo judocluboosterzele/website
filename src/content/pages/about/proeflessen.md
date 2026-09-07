@@ -3,7 +3,8 @@ title: "Gratis proeflessen"
 description: "Gratis proeflessen"
 ---
 
-Ben je benieuwd hoe het is om zelf op de mat te staan, of heeft je zoon of dochter zin om te starten met judo? Kom gerust een kijkje nemen tijdens één van onze lessen en schrijf je in voor **4 gratis proeflessen**. Na deze lessen beslis je zelf in alle vrijheid of je je wil inschrijven bij onze club.
+Ben je benieuwd hoe het is om zelf op de mat te staan, of heeft je zoon of dochter zin om te starten met judo? Kom gerust een kijkje nemen tijdens één van onze lessen en schrijf je in voor **4 gratis proeflessen**. Na deze lessen beslis je zelf in alle vrijheid of je je wil inschrijven bij onze club. 
+Voor de kleuterjudo voorzien we één gratis proefles per lessenreeks.
 
 ## Wat heb je nodig?
 
