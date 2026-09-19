@@ -8,6 +8,7 @@ import TrainingGroupCard from "../components/TrainingGroupCard.astro";
 import CTASection from "../components/CTASection.astro";
 import Calendar from "../components/Calendar.astro";
 import FacebookPosts from "../components/FacebookPosts.astro";
+import SpecialEvent from "../components/SpecialEvent.astro";
 
 // Images
 import heroImage from "../assets/images/hero.png";
@@ -15,6 +16,24 @@ import goudenLabel from "../assets/images/feature/goudenlabel.png";
 import gezondSporten from "../assets/images/feature/gezondsporten.png";
 import wedstrijd from "../assets/images/feature/wedstrijd.png";
 import leeftijden from "../assets/images/feature/leeftijden.png";
+
+
+// --------------------------------------------------------------------
+// Speciaal evenement (homepage banner onder "Welkom bij")
+// Zet "enabled" op false om de banner te verbergen. Er kan maar één
+// evenement tegelijk getoond worden — pas gewoon de velden hieronder
+// aan voor het volgende evenement (Eetfestijn, Clubkampioenschap, ...).
+// --------------------------------------------------------------------
+const specialEvent = {
+  enabled: true,
+  label: "Speciaal evenement",
+  title: "Eetfestijn",
+  date: "Zondag 25 oktober 2026",
+  description:
+    "Kom gezellig eten en steun onze club! Iedereen is welkom.",
+  // buttonText: "Meer info",
+  // buttonLink: "/",
+};
 ---
 
 <Layout
@@ -35,6 +54,8 @@ import leeftijden from "../assets/images/feature/leeftijden.png";
       imageUrl={heroImage}
       imageAlt="Foto startpagina"
     />
+
+    <SpecialEvent {...specialEvent} />
 
     <section class="features">
       <div class="container">
