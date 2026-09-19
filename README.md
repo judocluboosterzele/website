@@ -9,6 +9,14 @@
 7. Klik nog eens op commit
 8. Klaar
 
+# Setup devshell
+
+Run the following for easy development environment setup:
+
+```bash
+nix develop
+```
+
 # Astro: Basics
 
 ## 🧞 Commands
