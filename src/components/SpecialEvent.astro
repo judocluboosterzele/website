@@ -1,0 +1,63 @@
+---
+import "../styles/special-event.css";
+
+interface Props {
+  enabled: boolean;
+  label?: string;
+  title: string;
+  date: string;
+  description?: string;
+  buttonText?: string;
+  buttonLink?: string;
+}
+
+const {
+  enabled,
+  label = "Speciaal evenement",
+  title,
+  date,
+  description,
+  buttonText,
+  buttonLink,
+} = Astro.props;
+
+if (!enabled) return null;
+---
+
+<section class="special-event">
+  <div class="container">
+    <div class="special-event-card">
+      <div class="special-event-icon" aria-hidden="true">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="16" y1="2" x2="16" y2="6"></line>
+          <line x1="8" y1="2" x2="8" y2="6"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
+      </div>
+
+      <div class="special-event-text">
+        <span class="special-event-label">{label}</span>
+        <h2>{title}</h2>
+        <p class="special-event-date">{date}</p>
+        {description && <p class="special-event-description">{description}</p>}
+      </div>
+
+      {
+        buttonText && buttonLink && (
+          <a href={buttonLink} class="btn special-event-btn">
+            {buttonText}
+          </a>
+        )
+      }
+    </div>
+  </div>
+</section>
